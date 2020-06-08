@@ -243,7 +243,6 @@ VALUES	 ( 1, 1, 1, 1, 25.00, 1, 1, 1 )
 
 Select * From TGolfers
 
-SELECT DISTINCT intShirtSizeID, strShirtSizeDesc, intGenderID, strGenderDesc FROM TShirtSizes, TGenders
 
 
 

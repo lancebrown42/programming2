@@ -1,4 +1,9 @@
-﻿Public Class frmAddGolfer
+﻿''''
+'''Lance Brown
+'''Assignment 3
+'''6/5/20
+Option Strict On
+Public Class frmAddGolfer
     Private Sub frmAddGolfer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
 
@@ -105,8 +110,8 @@
         strZip = txtZip.Text
         strPhone = txtPhone.Text
         strEmail = txtEmail.Text
-        intShirtSizeID = cboShirt.SelectedValue
-        intGenderID = cboGender.SelectedValue
+        intShirtSizeID = CInt(cboShirt.SelectedValue)
+        intGenderID = CInt(cboGender.SelectedValue)
 
 
         If Validation() = True Then

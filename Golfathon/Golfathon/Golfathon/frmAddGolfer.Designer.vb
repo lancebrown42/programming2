@@ -268,7 +268,7 @@ Partial Class frmAddGolfer
         Me.Controls.Add(Me.txtFirstName)
         Me.Controls.Add(Me.btnClose)
         Me.Name = "frmAddGolfer"
-        Me.Text = "frmAddGolfer"
+        Me.Text = "Add Golfer"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

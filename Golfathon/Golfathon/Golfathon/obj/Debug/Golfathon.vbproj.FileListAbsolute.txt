@@ -13,3 +13,4 @@ C:\Users\lance\Documents\code\Programming2\Golfathon\Golfathon\Golfathon\obj\Deb
 C:\Users\lance\Documents\code\Programming2\Golfathon\Golfathon\Golfathon\obj\Debug\Golfathon.pdb
 C:\Users\lance\Documents\code\Programming2\Golfathon\Golfathon\Golfathon\obj\Debug\Golfathon.frmEvents.resources
 C:\Users\lance\Documents\code\Programming2\Golfathon\Golfathon\Golfathon\obj\Debug\Golfathon.frmAddGolfer.resources
+C:\Users\lance\Documents\code\Programming2\Golfathon\Golfathon\Golfathon\obj\Debug\Golfathon.frmAddEvent.resources
