@@ -11,3 +11,16 @@ C:\Users\lance\OneDrive\Documents\Visual Studio 2017\Projects\SumOfNumbers\SumOf
 C:\Users\lance\OneDrive\Documents\Visual Studio 2017\Projects\SumOfNumbers\SumOfNumbers\obj\Debug\SumOfNumbers.exe
 C:\Users\lance\OneDrive\Documents\Visual Studio 2017\Projects\SumOfNumbers\SumOfNumbers\obj\Debug\SumOfNumbers.xml
 C:\Users\lance\OneDrive\Documents\Visual Studio 2017\Projects\SumOfNumbers\SumOfNumbers\obj\Debug\SumOfNumbers.pdb
+C:\Users\lance\Documents\code\programming2\SumOfNumbers\SumOfNumbers\bin\Debug\SumOfNumbers.exe.config
+C:\Users\lance\Documents\code\programming2\SumOfNumbers\SumOfNumbers\bin\Debug\SumOfNumbers.exe
+C:\Users\lance\Documents\code\programming2\SumOfNumbers\SumOfNumbers\bin\Debug\SumOfNumbers.pdb
+C:\Users\lance\Documents\code\programming2\SumOfNumbers\SumOfNumbers\bin\Debug\SumOfNumbers.xml
+C:\Users\lance\Documents\code\programming2\SumOfNumbers\SumOfNumbers\obj\Debug\SumOfNumbers.vbprojAssemblyReference.cache
+C:\Users\lance\Documents\code\programming2\SumOfNumbers\SumOfNumbers\obj\Debug\SumOfNumbers.frmMain.resources
+C:\Users\lance\Documents\code\programming2\SumOfNumbers\SumOfNumbers\obj\Debug\SumOfNumbers.frmInput.resources
+C:\Users\lance\Documents\code\programming2\SumOfNumbers\SumOfNumbers\obj\Debug\SumOfNumbers.Resources.resources
+C:\Users\lance\Documents\code\programming2\SumOfNumbers\SumOfNumbers\obj\Debug\SumOfNumbers.vbproj.GenerateResource.cache
+C:\Users\lance\Documents\code\programming2\SumOfNumbers\SumOfNumbers\obj\Debug\SumOfNumbers.vbproj.CoreCompileInputs.cache
+C:\Users\lance\Documents\code\programming2\SumOfNumbers\SumOfNumbers\obj\Debug\SumOfNumbers.exe
+C:\Users\lance\Documents\code\programming2\SumOfNumbers\SumOfNumbers\obj\Debug\SumOfNumbers.xml
+C:\Users\lance\Documents\code\programming2\SumOfNumbers\SumOfNumbers\obj\Debug\SumOfNumbers.pdb

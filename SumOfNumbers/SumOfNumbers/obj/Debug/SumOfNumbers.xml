@@ -22,5 +22,10 @@ SumOfNumbers
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="T:SumOfNumbers.frmMain">
+Lance Brown
+5/25/20
+Program to take a single input and calculate the sum from 1 to the input/
+</member>
 </members>
 </doc>

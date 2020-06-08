@@ -1,0 +1,56 @@
+C:\Users\Ray\AppData\Local\Temporary Projects\Databases\bin\Debug\Databases.exe.config
+C:\Users\Ray\Documents\CinState\IT 102\Week Ten\Databases\Databases\bin\Debug\Databases.exe.config
+C:\Users\Ray\Documents\CinState\IT 102\Week Ten\Databases\Databases\obj\Debug\Databases.Resources.resources
+C:\Users\Ray\Documents\CinState\IT 102\Week Ten\Databases\Databases\obj\Debug\Databases.vbproj.GenerateResource.Cache
+C:\Users\Ray\Documents\CinState\IT 102\Week Ten\Databases\Databases\bin\Debug\Databases.exe
+C:\Users\Ray\Documents\CinState\IT 102\Week Ten\Databases\Databases\bin\Debug\Databases.pdb
+C:\Users\Ray\Documents\CinState\IT 102\Week Ten\Databases\Databases\bin\Debug\Databases.xml
+C:\Users\Ray\Documents\CinState\IT 102\Week Ten\Databases\Databases\obj\Debug\Databases.exe
+C:\Users\Ray\Documents\CinState\IT 102\Week Ten\Databases\Databases\obj\Debug\Databases.xml
+C:\Users\Ray\Documents\CinState\IT 102\Week Ten\Databases\Databases\obj\Debug\Databases.pdb
+C:\Users\raymond.harmon\Desktop\Zips\Databases\Databases\bin\Debug\Databases.exe.config
+C:\Users\raymond.harmon\Desktop\Zips\Databases\Databases\obj\Debug\Databases.exe
+C:\Users\raymond.harmon\Desktop\Zips\Databases\Databases\obj\Debug\Databases.xml
+C:\Users\raymond.harmon\Desktop\Zips\Databases\Databases\obj\Debug\Databases.pdb
+C:\Users\raymond.harmon\Desktop\Zips\Databases\Databases\obj\Debug\Databases.Form1.resources
+C:\Users\raymond.harmon\Desktop\Zips\Databases\Databases\obj\Debug\Databases.Resources.resources
+C:\Users\raymond.harmon\Desktop\Zips\Databases\Databases\obj\Debug\Databases.vbproj.GenerateResource.Cache
+C:\Users\raymond.harmon\Desktop\Zips\Databases\Databases\bin\Debug\Databases.exe
+C:\Users\raymond.harmon\Desktop\Zips\Databases\Databases\bin\Debug\Databases.pdb
+C:\Users\raymond.harmon\Desktop\Zips\Databases\Databases\bin\Debug\Databases.xml
+C:\Users\Ray\Documents\CinState\IT 102\Week Ten\Databases\Databases\obj\Debug\Databases.frmMain.resources
+C:\Users\Ray\Documents\CinState\IT 102\Week Ten\Databases\Databases\obj\Debug\Databases.frmAddPlayer.resources
+C:\Users\raymond.harmon\Desktop\Databases\Databases\bin\Debug\Databases.exe.config
+C:\Users\raymond.harmon\Desktop\Databases\Databases\obj\Debug\Databases.exe
+C:\Users\raymond.harmon\Desktop\Databases\Databases\obj\Debug\Databases.xml
+C:\Users\raymond.harmon\Desktop\Databases\Databases\obj\Debug\Databases.pdb
+C:\Users\raymond.harmon\Desktop\Databases\Databases\bin\Debug\Databases.exe
+C:\Users\raymond.harmon\Desktop\Databases\Databases\bin\Debug\Databases.pdb
+C:\Users\raymond.harmon\Desktop\Databases\Databases\bin\Debug\Databases.xml
+C:\Users\raymond.harmon\Desktop\Databases\Databases\obj\Debug\Databases.frmMain.resources
+C:\Users\raymond.harmon\Desktop\Databases\Databases\obj\Debug\Databases.frmAddPlayer.resources
+C:\Users\raymond.harmon\Desktop\Databases\Databases\obj\Debug\Databases.Resources.resources
+C:\Users\raymond.harmon\Desktop\Databases\Databases\obj\Debug\Databases.vbproj.GenerateResource.Cache
+C:\Users\rharm\Desktop\AAAZips\Databases\Databases\Databases\bin\Debug\Databases.exe.config
+C:\Users\rharm\Desktop\AAAZips\Databases\Databases\Databases\obj\Debug\Databases.exe
+C:\Users\rharm\Desktop\AAAZips\Databases\Databases\Databases\obj\Debug\Databases.xml
+C:\Users\rharm\Desktop\AAAZips\Databases\Databases\Databases\obj\Debug\Databases.pdb
+C:\Users\rharm\Desktop\AAAZips\Databases\Databases\Databases\bin\Debug\Databases.exe
+C:\Users\rharm\Desktop\AAAZips\Databases\Databases\Databases\bin\Debug\Databases.pdb
+C:\Users\rharm\Desktop\AAAZips\Databases\Databases\Databases\bin\Debug\Databases.xml
+C:\Users\rharm\Desktop\AAAZips\Databases\Databases\Databases\obj\Debug\Databases.vbprojResolveAssemblyReference.cache
+C:\Users\rharm\Desktop\AAAZips\Databases\Databases\Databases\obj\Debug\Databases.frmMain.resources
+C:\Users\rharm\Desktop\AAAZips\Databases\Databases\Databases\obj\Debug\Databases.Resources.resources
+C:\Users\rharm\Desktop\AAAZips\Databases\Databases\Databases\obj\Debug\Databases.vbproj.GenerateResource.Cache
+C:\Users\lance\Documents\code\Programming2\Databases\Databases\bin\Debug\Databases.exe.config
+C:\Users\lance\Documents\code\Programming2\Databases\Databases\bin\Debug\Databases.exe
+C:\Users\lance\Documents\code\Programming2\Databases\Databases\bin\Debug\Databases.pdb
+C:\Users\lance\Documents\code\Programming2\Databases\Databases\bin\Debug\Databases.xml
+C:\Users\lance\Documents\code\Programming2\Databases\Databases\obj\Debug\Databases.vbprojAssemblyReference.cache
+C:\Users\lance\Documents\code\Programming2\Databases\Databases\obj\Debug\Databases.frmMain.resources
+C:\Users\lance\Documents\code\Programming2\Databases\Databases\obj\Debug\Databases.Resources.resources
+C:\Users\lance\Documents\code\Programming2\Databases\Databases\obj\Debug\Databases.vbproj.GenerateResource.cache
+C:\Users\lance\Documents\code\Programming2\Databases\Databases\obj\Debug\Databases.vbproj.CoreCompileInputs.cache
+C:\Users\lance\Documents\code\Programming2\Databases\Databases\obj\Debug\Databases.exe
+C:\Users\lance\Documents\code\Programming2\Databases\Databases\obj\Debug\Databases.xml
+C:\Users\lance\Documents\code\Programming2\Databases\Databases\obj\Debug\Databases.pdb
