@@ -1,0 +1,12 @@
+C:\Users\lance\Documents\code\programming2\StringManipulation\StringManipulation\bin\Debug\StringManipulation.exe.config
+C:\Users\lance\Documents\code\programming2\StringManipulation\StringManipulation\bin\Debug\StringManipulation.exe
+C:\Users\lance\Documents\code\programming2\StringManipulation\StringManipulation\bin\Debug\StringManipulation.pdb
+C:\Users\lance\Documents\code\programming2\StringManipulation\StringManipulation\bin\Debug\StringManipulation.xml
+C:\Users\lance\Documents\code\programming2\StringManipulation\StringManipulation\obj\Debug\StringManipulation.vbprojAssemblyReference.cache
+C:\Users\lance\Documents\code\programming2\StringManipulation\StringManipulation\obj\Debug\StringManipulation.frmMain.resources
+C:\Users\lance\Documents\code\programming2\StringManipulation\StringManipulation\obj\Debug\StringManipulation.Resources.resources
+C:\Users\lance\Documents\code\programming2\StringManipulation\StringManipulation\obj\Debug\StringManipulation.vbproj.GenerateResource.cache
+C:\Users\lance\Documents\code\programming2\StringManipulation\StringManipulation\obj\Debug\StringManipulation.vbproj.CoreCompileInputs.cache
+C:\Users\lance\Documents\code\programming2\StringManipulation\StringManipulation\obj\Debug\StringManipulation.exe
+C:\Users\lance\Documents\code\programming2\StringManipulation\StringManipulation\obj\Debug\StringManipulation.xml
+C:\Users\lance\Documents\code\programming2\StringManipulation\StringManipulation\obj\Debug\StringManipulation.pdb

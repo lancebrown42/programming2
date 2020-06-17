@@ -32,13 +32,13 @@ Public Class frmMain
             Next
             If OpenDatabaseConnectionSQLServer() = False Then
 
-                
+
                 MessageBox.Show(Me, "Database connection error." & vbNewLine &
                                     "The application will now close.",
                                     Me.Text + " Error",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error)
 
-                
+
                 Me.Close()
             End If
 
@@ -72,20 +72,20 @@ Public Class frmMain
     Private Sub btnView_Click(sender As Object, e As EventArgs) Handles btnView.Click
         Dim strSelect As String = ""
         Dim strName As String = ""
-        Dim cmdSelect As OleDb.OleDbCommand 
+        Dim cmdSelect As OleDb.OleDbCommand
         Dim drSourceTable As OleDb.OleDbDataReader
         Dim dt As DataTable = New DataTable
 
-       
+
         If OpenDatabaseConnectionSQLServer() = False Then
 
-          
+
             MessageBox.Show(Me, "Database connection error." & vbNewLine &
                                 "The application will now close.",
                                 Me.Text + " Error",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error)
 
-          
+
             Me.Close()
 
         End If
@@ -169,7 +169,7 @@ Public Class frmMain
         Dim strSelect As String = String.Empty
         Dim strName As String = ""
         Dim intRowsAffected As Integer
-        Dim cmdDelete As OleDb.OleDbCommand 
+        Dim cmdDelete As OleDb.OleDbCommand
         Dim dt As DataTable = New DataTable
         Dim result As DialogResult
         If OpenDatabaseConnectionSQLServer() = False Then
