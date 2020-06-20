@@ -94,7 +94,7 @@ Public Class frmMain
     End Sub
     Private Function FormatPhoneNumber(ByVal strPhone As String) As String
         Dim strFormatted As String
-        If strPhone.Length <> 10 Or Not IsNumeric(strPhone) Then
+        If strPhone.Length <> 10 Then
             MessageBox.Show("Invalid entry")
             Return ""
         End If
@@ -107,4 +107,13 @@ Public Class frmMain
         Return strFormatted
 
     End Function
+    Private Sub txtEnterPhone_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtEnterPhone.KeyPress
+
+        'only accept number keystrokes and backspace keystroke
+        If Not Char.IsNumber(e.KeyChar) And e.KeyChar <> ControlChars.Back Then
+            e.Handled = True
+        End If
+
+    End Sub
+
 End Class
