@@ -1,4 +1,15 @@
-﻿Public Class frmMain
+﻿#Disable Warning BC42312 ' XML documentation comments must precede member or type declarations
+''' <summary>
+''' Lance Brown
+''' String Manipulation
+''' 6/15/20
+''' </summary>
+''' 
+''' Options
+Option Strict On
+#Enable Warning BC42312 ' XML documentation comments must precede member or type declarations
+
+Public Class frmMain
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Close()
     End Sub
@@ -41,7 +52,8 @@
     End Sub
 
     Private Sub btnSplit_Click(sender As Object, e As EventArgs) Handles btnSplit.Click
-        Dim arrSplit = SplitRecord(txtRecord.Text)
+        Dim arrSplit As String() = SplitRecord(txtRecord.Text)
+        txtRecord.ResetText()
         txtF1.Text = arrSplit(0).ToString
         txtF2.Text = arrSplit(1).ToString
         txtF3.Text = arrSplit(2).ToString
@@ -49,26 +61,50 @@
         txtF5.Text = arrSplit(4).ToString
         txtF6.Text = arrSplit(5).ToString
     End Sub
-    Private Function SplitRecord(ByVal strRecord As String) As Array
+    Private Function SplitRecord(ByVal strRecord As String) As String()
         Dim arrSub(5) As String
-        Dim arrIndices(7) As Integer
-        Dim strCurrentCharacter As String
-        Dim strCurrentRecord As String
-        arrIndices.SetValue(0, 0) 'start at beginning
-        arrIndices.SetValue(strRecord.Length - 1, 6) 'end at end
-        Dim j As Integer = 1
-        For i As Integer = 0 To strRecord.Length - 1
-            strCurrentCharacter = strRecord.Substring(i, 1)
-            If strCurrentCharacter = "," Then
-                arrIndices.SetValue(i, j)
-                j += 1
-            End If
+        arrSub = strRecord.Split(New Char() {","c}, 6)
+
+        'weed out additional entries
+        If arrSub(arrSub.Length - 1).IndexOf(",") <> -1 Then
+            arrSub(5) = arrSub(5).Substring(0, arrSub(5).IndexOf(","))
+        End If
+        'trim whitespace
+        For i = 0 To arrSub.Length - 1
+
+            arrSub(i) = arrSub(i).Trim()
+
         Next
-        For i As Integer = 0 To 5
-            strCurrentRecord = strRecord.Substring(arrIndices.GetValue(i) + 1, arrIndices.GetValue(i + 1) - arrIndices.GetValue(i) - 1)
-            arrSub.SetValue(strCurrentRecord, i)
-        Next
+        If arrSub.Length < 6 Then
+            Array.Resize(Of String)(arrSub, 6)
+            For i = 0 To arrSub.Length - 1
+                If IsNothing(arrSub(i)) Then
+                    arrSub(i) = ""
+                End If
+            Next
+        End If
+
         Return arrSub
+
+    End Function
+
+    Private Sub btnFormat_Click(sender As Object, e As EventArgs) Handles btnFormat.Click
+        Dim strPhone As String = txtEnterPhone.Text
+        txtFormatPhone.Text = FormatPhoneNumber(strPhone)
+    End Sub
+    Private Function FormatPhoneNumber(ByVal strPhone As String) As String
+        Dim strFormatted As String
+        If strPhone.Length <> 10 Or Not IsNumeric(strPhone) Then
+            MessageBox.Show("Invalid entry")
+            Return ""
+        End If
+        Try
+            strFormatted = String.Format("({0}){1}-{2}", strPhone.Substring(0, 3), strPhone.Substring(3, 3), strPhone.Substring(6, 4))
+        Catch ex As Exception
+            strFormatted = "Invalid entry"
+        End Try
+
+        Return strFormatted
 
     End Function
 End Class
