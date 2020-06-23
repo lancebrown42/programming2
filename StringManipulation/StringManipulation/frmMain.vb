@@ -90,12 +90,15 @@ Public Class frmMain
 
     Private Sub btnFormat_Click(sender As Object, e As EventArgs) Handles btnFormat.Click
         Dim strPhone As String = txtEnterPhone.Text
+        txtEnterPhone.BackColor = Color.Empty
         txtFormatPhone.Text = FormatPhoneNumber(strPhone)
     End Sub
     Private Function FormatPhoneNumber(ByVal strPhone As String) As String
         Dim strFormatted As String
         If strPhone.Length <> 10 Then
             MessageBox.Show("Invalid entry")
+            txtEnterPhone.BackColor = Color.Yellow
+            txtEnterPhone.Focus()
             Return ""
         End If
         Try
@@ -116,4 +119,17 @@ Public Class frmMain
 
     End Sub
 
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        For Each control As Control In Controls 'everything is in groups
+            For Each ctrl As Control In control.Controls
+                If TypeOf ctrl Is TextBox Then
+                    ctrl.Text = String.Empty
+                    ctrl.BackColor = Color.Empty
+                End If
+            Next
+
+
+        Next
+
+    End Sub
 End Class

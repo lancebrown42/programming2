@@ -138,8 +138,11 @@ Partial Class frmMain
         '
         'txtF6
         '
+        Me.txtF6.BackColor = System.Drawing.SystemColors.HighlightText
+        Me.txtF6.Cursor = System.Windows.Forms.Cursors.No
         Me.txtF6.Location = New System.Drawing.Point(283, 139)
         Me.txtF6.Name = "txtF6"
+        Me.txtF6.ReadOnly = True
         Me.txtF6.Size = New System.Drawing.Size(100, 20)
         Me.txtF6.TabIndex = 17
         '
@@ -154,8 +157,11 @@ Partial Class frmMain
         '
         'txtF4
         '
+        Me.txtF4.BackColor = System.Drawing.SystemColors.HighlightText
+        Me.txtF4.Cursor = System.Windows.Forms.Cursors.No
         Me.txtF4.Location = New System.Drawing.Point(283, 113)
         Me.txtF4.Name = "txtF4"
+        Me.txtF4.ReadOnly = True
         Me.txtF4.Size = New System.Drawing.Size(100, 20)
         Me.txtF4.TabIndex = 15
         '
@@ -170,8 +176,11 @@ Partial Class frmMain
         '
         'txtF2
         '
+        Me.txtF2.BackColor = System.Drawing.SystemColors.HighlightText
+        Me.txtF2.Cursor = System.Windows.Forms.Cursors.No
         Me.txtF2.Location = New System.Drawing.Point(283, 87)
         Me.txtF2.Name = "txtF2"
+        Me.txtF2.ReadOnly = True
         Me.txtF2.Size = New System.Drawing.Size(100, 20)
         Me.txtF2.TabIndex = 13
         '
@@ -186,8 +195,11 @@ Partial Class frmMain
         '
         'txtF5
         '
+        Me.txtF5.BackColor = System.Drawing.SystemColors.HighlightText
+        Me.txtF5.Cursor = System.Windows.Forms.Cursors.No
         Me.txtF5.Location = New System.Drawing.Point(74, 139)
         Me.txtF5.Name = "txtF5"
+        Me.txtF5.ReadOnly = True
         Me.txtF5.Size = New System.Drawing.Size(100, 20)
         Me.txtF5.TabIndex = 11
         '
@@ -202,8 +214,11 @@ Partial Class frmMain
         '
         'txtF3
         '
+        Me.txtF3.BackColor = System.Drawing.SystemColors.HighlightText
+        Me.txtF3.Cursor = System.Windows.Forms.Cursors.No
         Me.txtF3.Location = New System.Drawing.Point(74, 113)
         Me.txtF3.Name = "txtF3"
+        Me.txtF3.ReadOnly = True
         Me.txtF3.Size = New System.Drawing.Size(100, 20)
         Me.txtF3.TabIndex = 9
         '
@@ -218,8 +233,11 @@ Partial Class frmMain
         '
         'txtF1
         '
+        Me.txtF1.BackColor = System.Drawing.SystemColors.HighlightText
+        Me.txtF1.Cursor = System.Windows.Forms.Cursors.No
         Me.txtF1.Location = New System.Drawing.Point(74, 87)
         Me.txtF1.Name = "txtF1"
+        Me.txtF1.ReadOnly = True
         Me.txtF1.Size = New System.Drawing.Size(100, 20)
         Me.txtF1.TabIndex = 7
         '
