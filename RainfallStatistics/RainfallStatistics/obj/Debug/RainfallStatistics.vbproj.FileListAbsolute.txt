@@ -6,7 +6,6 @@ C:\Users\lance\Documents\code\programming2\RainfallStatistics\RainfallStatistics
 C:\Users\lance\Documents\code\programming2\RainfallStatistics\RainfallStatistics\obj\Debug\RainfallStatistics.frmMain.resources
 C:\Users\lance\Documents\code\programming2\RainfallStatistics\RainfallStatistics\obj\Debug\RainfallStatistics.Resources.resources
 C:\Users\lance\Documents\code\programming2\RainfallStatistics\RainfallStatistics\obj\Debug\RainfallStatistics.vbproj.GenerateResource.cache
-C:\Users\lance\Documents\code\programming2\RainfallStatistics\RainfallStatistics\obj\Debug\RainfallStatistics.vbproj.CoreCompileInputs.cache
 C:\Users\lance\Documents\code\programming2\RainfallStatistics\RainfallStatistics\obj\Debug\RainfallStatistics.exe
 C:\Users\lance\Documents\code\programming2\RainfallStatistics\RainfallStatistics\obj\Debug\RainfallStatistics.xml
 C:\Users\lance\Documents\code\programming2\RainfallStatistics\RainfallStatistics\obj\Debug\RainfallStatistics.pdb

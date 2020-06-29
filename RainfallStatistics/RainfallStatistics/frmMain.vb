@@ -1,4 +1,10 @@
-﻿Public Class frmMain
+﻿'''''
+'''Lance Brown
+'''6/25/20
+'''Assignment 5
+'''''
+Option Strict On
+Public Class frmMain
     Dim arrRainfall(12) As String
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Close()
@@ -6,16 +12,11 @@
 
     Private Sub btnInput_Click(sender As Object, e As EventArgs) Handles btnInput.Click
         Dim input As String = InputBox("Input monthly rainfall serparated by commas (eg. 3, 8, 6, 6, 4, 7, 5, 6, 3, 8, 2, 4, 3:")
-        If String.IsNullOrEmpty(input) Then
-            input = InputBox("Input required" & vbCrLf & "Input monthly rainfall serparated by commas (eg. 3, 8, 6, 6, 4, 7, 5, 6, 3, 8, 2, 4, 3:")
+        If Validate(input) Then
+            arrRainfall = SplitRecord(input)
+        Else
+            btnInput_Click(sender, e)
         End If
-        For Each c As Char In input
-            If Not IsNumeric(c) And c <> "," And c <> "." Then
-                input = InputBox("Input monthly rainfall as numbers serparated by commas (eg. 3, 8, 6, 6, 4, 7, 5, 6, 3, 8, 2, 4, 3:")
-                Exit For
-            End If
-        Next
-        arrRainfall = SplitRecord(input)
     End Sub
 
     Private Sub btnDisplay_Click(sender As Object, e As EventArgs) Handles btnDisplay.Click
@@ -26,7 +27,7 @@
         For Each entry In arrRainfall
             txtInput.AppendText(vbCrLf & "Rainfall for " & MonthName(i + 1) & "= " & entry)
 
-            dblTotal += entry
+            dblTotal += CDbl(entry)
             Array.Resize(arrNumbers, arrNumbers.Length + 1)
             arrNumbers(i) = CDbl(entry)
             Debug.WriteLine(arrNumbers(i))
@@ -73,7 +74,27 @@
         Return arrSub
 
     End Function
-    'Private Sub InputBox1_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles InputBox1.KeyPress
+    Private Function Validate(ByVal input As String) As Boolean
+        Dim blnIsValid As Boolean
+        If String.IsNullOrEmpty(input) Then
+            blnIsValid = False
+            MessageBox.Show("Input required")
 
-    'End Sub
+        End If
+        For Each c As Char In input
+            If IsNumeric(c) Or c = "," Or c = "." Or c = " " Then
+                blnIsValid = True
+            Else
+
+                MessageBox.Show("Must be numeric")
+                blnIsValid = False
+                Exit For
+            End If
+        Next
+
+        Return blnIsValid
+
+
+
+    End Function
 End Class
