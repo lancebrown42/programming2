@@ -1,0 +1,12 @@
+C:\Users\lance\Documents\code\programming2\PinVerifier\PinVerifier\obj\Debug\PinVerifier.vbprojAssemblyReference.cache
+C:\Users\lance\Documents\code\programming2\PinVerifier\PinVerifier\obj\Debug\PinVerifier.frmMain.resources
+C:\Users\lance\Documents\code\programming2\PinVerifier\PinVerifier\obj\Debug\PinVerifier.Resources.resources
+C:\Users\lance\Documents\code\programming2\PinVerifier\PinVerifier\obj\Debug\PinVerifier.vbproj.GenerateResource.cache
+C:\Users\lance\Documents\code\programming2\PinVerifier\PinVerifier\obj\Debug\PinVerifier.vbproj.CoreCompileInputs.cache
+C:\Users\lance\Documents\code\programming2\PinVerifier\PinVerifier\bin\Debug\PinVerifier.exe.config
+C:\Users\lance\Documents\code\programming2\PinVerifier\PinVerifier\bin\Debug\PinVerifier.exe
+C:\Users\lance\Documents\code\programming2\PinVerifier\PinVerifier\bin\Debug\PinVerifier.pdb
+C:\Users\lance\Documents\code\programming2\PinVerifier\PinVerifier\bin\Debug\PinVerifier.xml
+C:\Users\lance\Documents\code\programming2\PinVerifier\PinVerifier\obj\Debug\PinVerifier.exe
+C:\Users\lance\Documents\code\programming2\PinVerifier\PinVerifier\obj\Debug\PinVerifier.xml
+C:\Users\lance\Documents\code\programming2\PinVerifier\PinVerifier\obj\Debug\PinVerifier.pdb

@@ -23,13 +23,13 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.grpPin = New System.Windows.Forms.GroupBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.txt7 = New System.Windows.Forms.TextBox()
+        Me.txt6 = New System.Windows.Forms.TextBox()
+        Me.txt5 = New System.Windows.Forms.TextBox()
+        Me.txt4 = New System.Windows.Forms.TextBox()
+        Me.txt3 = New System.Windows.Forms.TextBox()
+        Me.txt2 = New System.Windows.Forms.TextBox()
+        Me.txt1 = New System.Windows.Forms.TextBox()
         Me.btnVerify = New System.Windows.Forms.Button()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
@@ -38,13 +38,13 @@ Partial Class frmMain
         '
         'grpPin
         '
-        Me.grpPin.Controls.Add(Me.TextBox7)
-        Me.grpPin.Controls.Add(Me.TextBox6)
-        Me.grpPin.Controls.Add(Me.TextBox5)
-        Me.grpPin.Controls.Add(Me.TextBox4)
-        Me.grpPin.Controls.Add(Me.TextBox3)
-        Me.grpPin.Controls.Add(Me.TextBox2)
-        Me.grpPin.Controls.Add(Me.TextBox1)
+        Me.grpPin.Controls.Add(Me.txt7)
+        Me.grpPin.Controls.Add(Me.txt6)
+        Me.grpPin.Controls.Add(Me.txt5)
+        Me.grpPin.Controls.Add(Me.txt4)
+        Me.grpPin.Controls.Add(Me.txt3)
+        Me.grpPin.Controls.Add(Me.txt2)
+        Me.grpPin.Controls.Add(Me.txt1)
         Me.grpPin.Location = New System.Drawing.Point(31, 44)
         Me.grpPin.Name = "grpPin"
         Me.grpPin.Size = New System.Drawing.Size(290, 63)
@@ -52,54 +52,54 @@ Partial Class frmMain
         Me.grpPin.TabStop = False
         Me.grpPin.Text = "Enter The Pin"
         '
-        'TextBox1
+        'txt7
         '
-        Me.TextBox1.Location = New System.Drawing.Point(7, 20)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(33, 20)
-        Me.TextBox1.TabIndex = 0
+        Me.txt7.Location = New System.Drawing.Point(241, 20)
+        Me.txt7.Name = "txt7"
+        Me.txt7.Size = New System.Drawing.Size(33, 20)
+        Me.txt7.TabIndex = 6
         '
-        'TextBox2
+        'txt6
         '
-        Me.TextBox2.Location = New System.Drawing.Point(46, 20)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(33, 20)
-        Me.TextBox2.TabIndex = 1
+        Me.txt6.Location = New System.Drawing.Point(202, 20)
+        Me.txt6.Name = "txt6"
+        Me.txt6.Size = New System.Drawing.Size(33, 20)
+        Me.txt6.TabIndex = 5
         '
-        'TextBox3
+        'txt5
         '
-        Me.TextBox3.Location = New System.Drawing.Point(85, 20)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(33, 20)
-        Me.TextBox3.TabIndex = 2
+        Me.txt5.Location = New System.Drawing.Point(163, 20)
+        Me.txt5.Name = "txt5"
+        Me.txt5.Size = New System.Drawing.Size(33, 20)
+        Me.txt5.TabIndex = 4
         '
-        'TextBox4
+        'txt4
         '
-        Me.TextBox4.Location = New System.Drawing.Point(124, 20)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(33, 20)
-        Me.TextBox4.TabIndex = 3
+        Me.txt4.Location = New System.Drawing.Point(124, 20)
+        Me.txt4.Name = "txt4"
+        Me.txt4.Size = New System.Drawing.Size(33, 20)
+        Me.txt4.TabIndex = 3
         '
-        'TextBox5
+        'txt3
         '
-        Me.TextBox5.Location = New System.Drawing.Point(163, 20)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(33, 20)
-        Me.TextBox5.TabIndex = 4
+        Me.txt3.Location = New System.Drawing.Point(85, 20)
+        Me.txt3.Name = "txt3"
+        Me.txt3.Size = New System.Drawing.Size(33, 20)
+        Me.txt3.TabIndex = 2
         '
-        'TextBox6
+        'txt2
         '
-        Me.TextBox6.Location = New System.Drawing.Point(202, 20)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(33, 20)
-        Me.TextBox6.TabIndex = 5
+        Me.txt2.Location = New System.Drawing.Point(46, 20)
+        Me.txt2.Name = "txt2"
+        Me.txt2.Size = New System.Drawing.Size(33, 20)
+        Me.txt2.TabIndex = 1
         '
-        'TextBox7
+        'txt1
         '
-        Me.TextBox7.Location = New System.Drawing.Point(241, 20)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(33, 20)
-        Me.TextBox7.TabIndex = 6
+        Me.txt1.Location = New System.Drawing.Point(7, 20)
+        Me.txt1.Name = "txt1"
+        Me.txt1.Size = New System.Drawing.Size(33, 20)
+        Me.txt1.TabIndex = 0
         '
         'btnVerify
         '
@@ -146,13 +146,13 @@ Partial Class frmMain
     End Sub
 
     Friend WithEvents grpPin As GroupBox
-    Friend WithEvents TextBox7 As TextBox
-    Friend WithEvents TextBox6 As TextBox
-    Friend WithEvents TextBox5 As TextBox
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txt7 As TextBox
+    Friend WithEvents txt6 As TextBox
+    Friend WithEvents txt5 As TextBox
+    Friend WithEvents txt4 As TextBox
+    Friend WithEvents txt3 As TextBox
+    Friend WithEvents txt2 As TextBox
+    Friend WithEvents txt1 As TextBox
     Friend WithEvents btnVerify As Button
     Friend WithEvents btnClear As Button
     Friend WithEvents btnClose As Button
