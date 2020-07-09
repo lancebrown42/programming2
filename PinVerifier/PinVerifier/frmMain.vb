@@ -15,6 +15,11 @@ Public Class frmMain
         Dim intMinimum() As Integer = {7, 0, 5, 0, 4, 3, 0}
         Dim intMaximum() As Integer = {9, 5, 9, 4, 8, 6, 3}
         For Each txtBox As TextBox In grpPin.Controls
+            If String.IsNullOrEmpty(txtBox.Text) Or String.IsNullOrWhiteSpace(txtBox.Text) Then
+                MessageBox.Show("Field cannot be empty", "Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Err(txtBox)
+                Exit For
+            End If
             Dim i As Integer = txtBox.TabIndex
             intPin(i) = CInt(txtBox.Text)
             If intPin(i) >= intMinimum(i) And intPin(i) <= intMaximum(i) Then

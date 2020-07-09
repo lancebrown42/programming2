@@ -23,13 +23,14 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.grpPin = New System.Windows.Forms.GroupBox()
-        Me.txt7 = New System.Windows.Forms.TextBox()
-        Me.txt6 = New System.Windows.Forms.TextBox()
-        Me.txt5 = New System.Windows.Forms.TextBox()
-        Me.txt4 = New System.Windows.Forms.TextBox()
-        Me.txt3 = New System.Windows.Forms.TextBox()
-        Me.txt2 = New System.Windows.Forms.TextBox()
         Me.txt1 = New System.Windows.Forms.TextBox()
+        Me.txt2 = New System.Windows.Forms.TextBox()
+        Me.txt3 = New System.Windows.Forms.TextBox()
+
+        Me.txt4 = New System.Windows.Forms.TextBox()
+        Me.txt5 = New System.Windows.Forms.TextBox()
+        Me.txt6 = New System.Windows.Forms.TextBox()
+        Me.txt7 = New System.Windows.Forms.TextBox()
         Me.btnVerify = New System.Windows.Forms.Button()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
@@ -38,13 +39,14 @@ Partial Class frmMain
         '
         'grpPin
         '
-        Me.grpPin.Controls.Add(Me.txt7)
-        Me.grpPin.Controls.Add(Me.txt6)
-        Me.grpPin.Controls.Add(Me.txt5)
-        Me.grpPin.Controls.Add(Me.txt4)
-        Me.grpPin.Controls.Add(Me.txt3)
-        Me.grpPin.Controls.Add(Me.txt2)
         Me.grpPin.Controls.Add(Me.txt1)
+        Me.grpPin.Controls.Add(Me.txt2)
+        Me.grpPin.Controls.Add(Me.txt3)
+
+        Me.grpPin.Controls.Add(Me.txt4)
+        Me.grpPin.Controls.Add(Me.txt5)
+        Me.grpPin.Controls.Add(Me.txt6)
+        Me.grpPin.Controls.Add(Me.txt7)
         Me.grpPin.Location = New System.Drawing.Point(31, 44)
         Me.grpPin.Name = "grpPin"
         Me.grpPin.Size = New System.Drawing.Size(290, 63)
@@ -146,13 +148,13 @@ Partial Class frmMain
     End Sub
 
     Friend WithEvents grpPin As GroupBox
-    Friend WithEvents txt7 As TextBox
-    Friend WithEvents txt6 As TextBox
-    Friend WithEvents txt5 As TextBox
-    Friend WithEvents txt4 As TextBox
-    Friend WithEvents txt3 As TextBox
-    Friend WithEvents txt2 As TextBox
     Friend WithEvents txt1 As TextBox
+    Friend WithEvents txt2 As TextBox
+    Friend WithEvents txt3 As TextBox
+    Friend WithEvents txt4 As TextBox
+    Friend WithEvents txt5 As TextBox
+    Friend WithEvents txt6 As TextBox
+    Friend WithEvents txt7 As TextBox
     Friend WithEvents btnVerify As Button
     Friend WithEvents btnClear As Button
     Friend WithEvents btnClose As Button
