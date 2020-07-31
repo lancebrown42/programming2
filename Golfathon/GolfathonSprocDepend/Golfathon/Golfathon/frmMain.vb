@@ -19,6 +19,6 @@ Public Class frmMain
     End Sub
 
     Private Sub btnGolferEvent_Click(sender As Object, e As EventArgs) Handles btnGolferEvent.Click
-
+        frmAddGolferEvent.ShowDialog()
     End Sub
 End Class

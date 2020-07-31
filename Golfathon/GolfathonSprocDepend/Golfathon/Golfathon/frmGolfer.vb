@@ -81,6 +81,11 @@ Public Class frmGolfer
     End Sub
 
     Private Sub btnSubmit_Click(sender As Object, e As EventArgs) Handles btnSubmit.Click
+        '''''
+        '''*************************************************************************************************************
+        '''TODO
+        '''Handle "Submit" with nothing selected, because this form is not intuitive
+        '''**************************************************************************************************************
         Dim strSelect As String = ""
         Dim strName As String = ""
         Dim cmdSelect As OleDb.OleDbCommand ' this will be used for our Select statement

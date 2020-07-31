@@ -26,11 +26,11 @@ Partial Class frmAddGolferEvent
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnExit = New System.Windows.Forms.Button()
-        Me.btnDropPlayer = New System.Windows.Forms.Button()
-        Me.btnAddPlayer = New System.Windows.Forms.Button()
+        Me.btnDropGolfer = New System.Windows.Forms.Button()
+        Me.btnAddGolfer = New System.Windows.Forms.Button()
         Me.lstAvailable = New System.Windows.Forms.ListBox()
-        Me.lstOnTeam = New System.Windows.Forms.ListBox()
-        Me.cboNames = New System.Windows.Forms.ComboBox()
+        Me.lstInEvent = New System.Windows.Forms.ListBox()
+        Me.cboEvents = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'Label3
@@ -38,9 +38,9 @@ Partial Class frmAddGolferEvent
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(255, 94)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(90, 13)
+        Me.Label3.Size = New System.Drawing.Size(89, 13)
         Me.Label3.TabIndex = 18
-        Me.Label3.Text = "Available Players:"
+        Me.Label3.Text = "Available Golfers:"
         '
         'Label2
         '
@@ -49,7 +49,7 @@ Partial Class frmAddGolferEvent
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(74, 13)
         Me.Label2.TabIndex = 17
-        Me.Label2.Text = "Team Players:"
+        Me.Label2.Text = "Event Golfers:"
         '
         'Label1
         '
@@ -58,7 +58,7 @@ Partial Class frmAddGolferEvent
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(38, 13)
         Me.Label1.TabIndex = 16
-        Me.Label1.Text = "Golfer:"
+        Me.Label1.Text = "Event:"
         '
         'btnExit
         '
@@ -69,26 +69,26 @@ Partial Class frmAddGolferEvent
         Me.btnExit.Text = "Exit"
         Me.btnExit.UseVisualStyleBackColor = True
         '
-        'btnDropPlayer
+        'btnDropGolfer
         '
-        Me.btnDropPlayer.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.btnDropPlayer.Location = New System.Drawing.Point(183, 188)
-        Me.btnDropPlayer.Name = "btnDropPlayer"
-        Me.btnDropPlayer.Size = New System.Drawing.Size(46, 38)
-        Me.btnDropPlayer.TabIndex = 14
-        Me.btnDropPlayer.Text = "→"
-        Me.btnDropPlayer.UseVisualStyleBackColor = True
+        Me.btnDropGolfer.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
+        Me.btnDropGolfer.Location = New System.Drawing.Point(183, 188)
+        Me.btnDropGolfer.Name = "btnDropGolfer"
+        Me.btnDropGolfer.Size = New System.Drawing.Size(46, 38)
+        Me.btnDropGolfer.TabIndex = 14
+        Me.btnDropGolfer.Text = "→"
+        Me.btnDropGolfer.UseVisualStyleBackColor = True
         '
-        'btnAddPlayer
+        'btnAddGolfer
         '
-        Me.btnAddPlayer.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAddPlayer.Location = New System.Drawing.Point(183, 132)
-        Me.btnAddPlayer.Name = "btnAddPlayer"
-        Me.btnAddPlayer.Size = New System.Drawing.Size(46, 35)
-        Me.btnAddPlayer.TabIndex = 13
-        Me.btnAddPlayer.Text = "←"
-        Me.btnAddPlayer.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnAddPlayer.UseVisualStyleBackColor = True
+        Me.btnAddGolfer.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAddGolfer.Location = New System.Drawing.Point(183, 132)
+        Me.btnAddGolfer.Name = "btnAddGolfer"
+        Me.btnAddGolfer.Size = New System.Drawing.Size(46, 35)
+        Me.btnAddGolfer.TabIndex = 13
+        Me.btnAddGolfer.Text = "←"
+        Me.btnAddGolfer.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnAddGolfer.UseVisualStyleBackColor = True
         '
         'lstAvailable
         '
@@ -98,21 +98,21 @@ Partial Class frmAddGolferEvent
         Me.lstAvailable.Size = New System.Drawing.Size(106, 121)
         Me.lstAvailable.TabIndex = 12
         '
-        'lstOnTeam
+        'lstInEvent
         '
-        Me.lstOnTeam.FormattingEnabled = True
-        Me.lstOnTeam.Location = New System.Drawing.Point(44, 117)
-        Me.lstOnTeam.Name = "lstOnTeam"
-        Me.lstOnTeam.Size = New System.Drawing.Size(106, 121)
-        Me.lstOnTeam.TabIndex = 11
+        Me.lstInEvent.FormattingEnabled = True
+        Me.lstInEvent.Location = New System.Drawing.Point(44, 117)
+        Me.lstInEvent.Name = "lstInEvent"
+        Me.lstInEvent.Size = New System.Drawing.Size(106, 121)
+        Me.lstInEvent.TabIndex = 11
         '
-        'cboNames
+        'cboEvents
         '
-        Me.cboNames.FormattingEnabled = True
-        Me.cboNames.Location = New System.Drawing.Point(44, 42)
-        Me.cboNames.Name = "cboNames"
-        Me.cboNames.Size = New System.Drawing.Size(106, 21)
-        Me.cboNames.TabIndex = 10
+        Me.cboEvents.FormattingEnabled = True
+        Me.cboEvents.Location = New System.Drawing.Point(44, 42)
+        Me.cboEvents.Name = "cboEvents"
+        Me.cboEvents.Size = New System.Drawing.Size(106, 21)
+        Me.cboEvents.TabIndex = 10
         '
         'frmAddGolferEvent
         '
@@ -123,11 +123,11 @@ Partial Class frmAddGolferEvent
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnExit)
-        Me.Controls.Add(Me.btnDropPlayer)
-        Me.Controls.Add(Me.btnAddPlayer)
+        Me.Controls.Add(Me.btnDropGolfer)
+        Me.Controls.Add(Me.btnAddGolfer)
         Me.Controls.Add(Me.lstAvailable)
-        Me.Controls.Add(Me.lstOnTeam)
-        Me.Controls.Add(Me.cboNames)
+        Me.Controls.Add(Me.lstInEvent)
+        Me.Controls.Add(Me.cboEvents)
         Me.Name = "frmAddGolferEvent"
         Me.Text = "frmAddGolferEvent"
         Me.ResumeLayout(False)
@@ -139,9 +139,9 @@ Partial Class frmAddGolferEvent
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents btnExit As Button
-    Friend WithEvents btnDropPlayer As Button
-    Friend WithEvents btnAddPlayer As Button
+    Friend WithEvents btnDropGolfer As Button
+    Friend WithEvents btnAddGolfer As Button
     Friend WithEvents lstAvailable As ListBox
-    Friend WithEvents lstOnTeam As ListBox
-    Friend WithEvents cboNames As ComboBox
+    Friend WithEvents lstInEvent As ListBox
+    Friend WithEvents cboEvents As ComboBox
 End Class

@@ -26,33 +26,39 @@ IF OBJECT_ID( 'TSponsorTypes' )					IS NOT NULL DROP TABLE	TSponsorTypes
 IF OBJECT_ID( 'uspAddGolfer' )					IS NOT NULL DROP PROCEDURE	uspAddGolfer
 IF OBJECT_ID( 'uspAddEvent' )					IS NOT NULL DROP PROCEDURE	uspAddEvent
 
+IF OBJECT_ID( 'uspAddGolferEventYear' )					IS NOT NULL DROP PROCEDURE	uspAddGolferEventYear
+
+IF OBJECT_ID( 'uspAddGolferAndEventYear' )					IS NOT NULL DROP PROCEDURE	uspAddGolferAndEventYear
+
+IF OBJECT_ID( 'vAvailableGolfers' )					IS NOT NULL DROP VIEW	vAvailableGolfers
+IF OBJECT_ID( 'vEventGolfers' )					IS NOT NULL DROP VIEW	vEventGolfers
 -- --------------------------------------------------------------------------------
 -- Step #1: Create Tables
 -- --------------------------------------------------------------------------------
 CREATE TABLE TEventYears
 (
-	 intEventYearID		INTEGER IDENTITY		NOT NULL
+	 intEventYearID		INTEGER		
 	,intEventYear		INTEGER			NOT NULL
 	,CONSTRAINT TEventYears_PK PRIMARY KEY ( intEventYearID	)
 )
 
 CREATE TABLE TGenders
 (
-	 intGenderID		INTEGER IDENTITY			NOT NULL
+	 intGenderID		INTEGER 			NOT NULL
 	,strGenderDesc			VARCHAR(50)		NOT NULL
 	,CONSTRAINT TGenders_PK PRIMARY KEY ( intGenderID )
 )
 
 CREATE TABLE TShirtSizes
 (
-	 intShirtSizeID			INTEGER IDENTITY			NOT NULL
+	 intShirtSizeID			INTEGER			NOT NULL
 	,strShirtSizeDesc		VARCHAR(50)		NOT NULL
 	,CONSTRAINT TShirtSizes_PK PRIMARY KEY ( intShirtSizeID )
 )
 
 CREATE TABLE TGolfers
 (
-	 intGolferID		INTEGER IDENTITY			NOT NULL
+	 intGolferID		INTEGER	
 	,strFirstName		VARCHAR(50)		NOT NULL
 	,strLastName		VARCHAR(50)		NOT NULL
 	,strStreetAddress	VARCHAR(50)		NOT NULL
@@ -68,7 +74,7 @@ CREATE TABLE TGolfers
 
 CREATE TABLE TSponsors
 (
-	 intSponsorID		INTEGER IDENTITY			NOT NULL
+	 intSponsorID		INTEGER			NOT NULL
 	,strFirstName		VARCHAR(50)		NOT NULL
 	,strLastName		VARCHAR(50)		NOT NULL
 	,strStreetAddress	VARCHAR(50)		NOT NULL
@@ -82,14 +88,14 @@ CREATE TABLE TSponsors
 
 CREATE TABLE TPaymentTypes
 (
-	 intPaymentTypeID		INTEGER IDENTITY			NOT NULL
+	 intPaymentTypeID		INTEGER			NOT NULL
 	,strPaymentTypeDesc		VARCHAR(50)		NOT NULL
 	,CONSTRAINT TPaymentTypes_PK PRIMARY KEY ( intPaymentTypeID )
 )
 
 CREATE TABLE TGolferEventYears
 (
-	 intGolferEventYearID	INTEGER		NOT NULL
+	 intGolferEventYearID	INTEGER IDENTITY		
 	,intGolferID			INTEGER			NOT NULL
 	,intEventYearID			INTEGER			NOT NULL
 	,CONSTRAINT TGolferEventYears_UQ UNIQUE ( intGolferID, intEventYearID )
@@ -99,7 +105,7 @@ CREATE TABLE TGolferEventYears
 
 CREATE TABLE TGolferEventYearSponsors
 (
-	 intGolferEventYearSponsorID	INTEGER IDENTITY			NOT NULL
+	 intGolferEventYearSponsorID	INTEGER 			NOT NULL
 	,intGolferID					INTEGER			NOT NULL
 	,intEventYearID					INTEGER			NOT NULL
 	,intSponsorID					INTEGER			NOT NULL
@@ -113,7 +119,7 @@ CREATE TABLE TGolferEventYearSponsors
 
 CREATE TABLE TSponsorTypes
 (
-	 intSponsorTypeID		INTEGER IDENTITY			NOT NULL
+	 intSponsorTypeID		INTEGER			NOT NULL
 	,strSponsorTypeDesc		VARCHAR(50)		NOT NULL
 	,CONSTRAINT TSponsorTypes_PK PRIMARY KEY ( intSponsorTypeID )
 )
@@ -220,6 +226,32 @@ VALUES	 ( 1, 'Jim', 'Smith', '1979 Wayne Trace Rd.', 'Willow', 'OH', '42368', '5
 	
 
 GO
+CREATE VIEW vAvailableGolfers
+AS
+SELECT
+	intGolferID
+	,strLastName
+FROM
+	TGolfers
+WHERE
+	intGolferID NOT IN (SELECT intGolferID from TGolferEventYears)
+
+GO
+CREATE VIEW vEventGolfers
+AS
+SELECT
+	TG.intGolferID
+	,TG.strLastNAme
+	,TE.intEventYearID
+FROM
+	TGolfers as TG
+	,TEventYears as TE
+	,TGolferEventYears as TGE
+WHERE
+	TG.intGolferID = TGE.intGolferID
+AND	TE.intEventYearID = TGE.intEventYearID
+
+GO
 CREATE PROCEDURE uspAddGolfer
 		@intGolferID as INTEGER OUTPUT
 		,@strFirstName as VARCHAR(255)
@@ -287,17 +319,17 @@ COMMIT TRANSACTION
 GO
 CREATE PROCEDURE uspAddGolferAndEventYear
 		@intGolferEventYearID as INTEGER OUTPUT
-		,@strFirstName		AS VARCHAR(50)		NOT NULL
-		,@strLastName		AS VARCHAR(50)		NOT NULL
-		,@strStreetAddress	AS VARCHAR(50)		NOT NULL
-		,@strCity			AS VARCHAR(50)		NOT NULL
-		,@strState			AS VARCHAR(50)		NOT NULL
-		,@strZip			AS VARCHAR(50)		NOT NULL
-		,@strPhoneNumber	AS VARCHAR(50)		NOT NULL
-		,@strEmail			AS VARCHAR(50)		NOT NULL
-		,@intShirtSizeID	AS INTEGER			NOT NULL
-		,@intGenderID		AS INTEGER			NOT NULL
-		,@intEventYear		AS INTEGER			NOT NULL
+		,@strFirstName		AS VARCHAR(50)		
+		,@strLastName		AS VARCHAR(50)		
+		,@strStreetAddress	AS VARCHAR(50)		
+		,@strCity			AS VARCHAR(50)		
+		,@strState			AS VARCHAR(50)		
+		,@strZip			AS VARCHAR(50)		
+		,@strPhoneNumber	AS VARCHAR(50)		
+		,@strEmail			AS VARCHAR(50)		
+		,@intShirtSizeID	AS INTEGER			
+		,@intGenderID		AS INTEGER			
+		,@intEventYear		AS INTEGER			
 AS
 SET XACT_ABORT ON
 
