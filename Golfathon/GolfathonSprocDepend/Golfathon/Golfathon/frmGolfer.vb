@@ -1,7 +1,7 @@
 ﻿''''
 '''Lance Brown
-'''Assignment 3
-'''6/5/20
+'''Assignment 8
+'''08/01/20
 '''Program that pulls data from DB and allows user to update golfer info
 '''
 Option Strict On
@@ -86,50 +86,54 @@ Public Class frmGolfer
         '''TODO
         '''Handle "Submit" with nothing selected, because this form is not intuitive
         '''**************************************************************************************************************
-        Dim strSelect As String = ""
-        Dim strName As String = ""
-        Dim cmdSelect As OleDb.OleDbCommand ' this will be used for our Select statement
-        Dim drSourceTable As OleDb.OleDbDataReader ' this will be where our data is retrieved to
-        Dim dt As DataTable = New DataTable ' this is the table we will load from our reader
+        Try
+            Dim strSelect As String = ""
+            Dim strName As String = ""
+            Dim cmdSelect As OleDb.OleDbCommand ' this will be used for our Select statement
+            Dim drSourceTable As OleDb.OleDbDataReader ' this will be where our data is retrieved to
+            Dim dt As DataTable = New DataTable ' this is the table we will load from our reader
 
-        ' open the database
-        If OpenDatabaseConnectionSQLServer() = False Then
+            ' open the database
+            If OpenDatabaseConnectionSQLServer() = False Then
 
-            ' No, warn the user ...
-            MessageBox.Show(Me, "Database connection error." & vbNewLine &
+                ' No, warn the user ...
+                MessageBox.Show(Me, "Database connection error." & vbNewLine &
                                 "The application will now close.",
                                 Me.Text + " Error",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error)
 
-            ' and close the form/application
-            Me.Close()
+                ' and close the form/application
+                Me.Close()
 
-        End If
+            End If
 
-        ' Build the select statement using PK from name selected
-        strSelect = "SELECT strFirstName, strLastName, strStreetAddress, strCity, strState, strZip, strPhoneNumber, strEmail, strShirtSizeDesc, strGenderDesc FROM TGolfers JOIN TShirtSizes on TGolfers.intShirtSizeID = TShirtSizes.intShirtSizeID JOIN TGenders on TGolfers.intGenderID = TGenders.intGenderID Where intGolferID = " & cboNames.SelectedValue.ToString
+            ' Build the select statement using PK from name selected
+            strSelect = "SELECT strFirstName, strLastName, strStreetAddress, strCity, strState, strZip, strPhoneNumber, strEmail, strShirtSizeDesc, strGenderDesc FROM TGolfers JOIN TShirtSizes on TGolfers.intShirtSizeID = TShirtSizes.intShirtSizeID JOIN TGenders on TGolfers.intGenderID = TGenders.intGenderID Where intGolferID = " & cboNames.SelectedValue.ToString
 
-        ' Retrieve all the records 
-        cmdSelect = New OleDb.OleDbCommand(strSelect, m_conAdministrator)
-        drSourceTable = cmdSelect.ExecuteReader
+            ' Retrieve all the records 
+            cmdSelect = New OleDb.OleDbCommand(strSelect, m_conAdministrator)
+            drSourceTable = cmdSelect.ExecuteReader
 
-        ' load the data table from the reader
-        dt.Load(drSourceTable)
+            ' load the data table from the reader
+            dt.Load(drSourceTable)
 
-        ' populate the text boxes with the data
-        txtFirstName.Text = dt.Rows(0).Item(0).ToString
-        txtLastName.Text = dt.Rows(0).Item(1).ToString
-        txtAddress.Text = dt.Rows(0).Item(2).ToString
-        txtCity.Text = dt.Rows(0).Item(3).ToString
-        txtState.Text = dt.Rows(0).Item(4).ToString
-        txtZip.Text = dt.Rows(0).Item(5).ToString
-        txtPhone.Text = dt.Rows(0).Item(6).ToString
-        txtEmail.Text = dt.Rows(0).Item(7).ToString
-        cboShirt.SelectedItem = dt.Rows(0).Item(8)
-        cboGender.SelectedItem = dt.Rows(0).Item(9)
+            ' populate the text boxes with the data
+            txtFirstName.Text = dt.Rows(0).Item(0).ToString
+            txtLastName.Text = dt.Rows(0).Item(1).ToString
+            txtAddress.Text = dt.Rows(0).Item(2).ToString
+            txtCity.Text = dt.Rows(0).Item(3).ToString
+            txtState.Text = dt.Rows(0).Item(4).ToString
+            txtZip.Text = dt.Rows(0).Item(5).ToString
+            txtPhone.Text = dt.Rows(0).Item(6).ToString
+            txtEmail.Text = dt.Rows(0).Item(7).ToString
+            cboShirt.SelectedItem = dt.Rows(0).Item(8)
+            cboGender.SelectedItem = dt.Rows(0).Item(9)
 
-        ' close the database connection
-        CloseDatabaseConnection()
+            ' close the database connection
+            CloseDatabaseConnection()
+        Catch ex As Exception
+            MessageBox.Show("You probably didn't select a player. Error message: " & ex.Message)
+        End Try
     End Sub
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click

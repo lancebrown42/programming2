@@ -1,7 +1,7 @@
 ﻿''''
 '''Lance Brown
-'''Assignment 3
-'''6/5/20
+'''Assignment 8
+'''08/01/20
 '''Program that pulls data from DB and allows user to update golfer info
 '''
 Option Strict On

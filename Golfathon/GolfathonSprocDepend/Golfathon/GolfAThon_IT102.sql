@@ -1,5 +1,5 @@
 --Lance Brown
---Assignment 7
+--Assignment 8
 --7/25/20
 -- --------------------------------------------------------------------------------
 -- Options
@@ -229,12 +229,15 @@ GO
 CREATE VIEW vAvailableGolfers
 AS
 SELECT
-	intGolferID
-	,strLastName
+	TG.intGolferID
+	,TG.strLastName
+	,TE.intEventYearID
 FROM
-	TGolfers
+	TGolfers as TG
+	,TEventYears as TE
 WHERE
-	intGolferID NOT IN (SELECT intGolferID from TGolferEventYears)
+	TG.intGolferID NOT IN (SELECT intGolferID from TGolferEventYears)
+	
 
 GO
 CREATE VIEW vEventGolfers
@@ -350,10 +353,18 @@ COMMIT TRANSACTION
 
 
 
+SELECT intGolferID, strLastName FROM vAvailableGolfers WHERE intEventYearID = 2
+
+
+SELECT
+	TG.intGolferID
+	,TG.strLastName
+FROM
+	TGolfers as TG
+WHERE
+	TG.intGolferID NOT IN (SELECT intGolferID from TGolferEventYears)
+	--AND TE.intEventYearID = TGE.intEventYearID
 
 
 
-
-
-
-
+SELECT intGolferID, strLastName FROM TGolfers WHERE intGolferID NOT IN (SELECT intGolferID FROM TGolferEventYears WHERE TGolferEventYears.intEventYearID = 0)

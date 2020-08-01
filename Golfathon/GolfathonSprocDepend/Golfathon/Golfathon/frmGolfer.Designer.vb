@@ -53,6 +53,7 @@ Partial Class frmGolfer
         '
         'cboNames
         '
+        Me.cboNames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboNames.FormattingEnabled = True
         Me.cboNames.Location = New System.Drawing.Point(76, 44)
         Me.cboNames.Name = "cboNames"

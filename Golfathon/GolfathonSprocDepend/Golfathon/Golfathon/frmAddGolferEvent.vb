@@ -1,4 +1,8 @@
-﻿Public Class frmAddGolferEvent
+﻿'''Lance Brown
+'''Assignment 8
+'''08/01/20
+Option Strict On
+Public Class frmAddGolferEvent
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         Close()
     End Sub
@@ -9,6 +13,7 @@
             Dim cmdSelect As OleDb.OleDbCommand
             Dim drSourceTable As OleDb.OleDbDataReader
             Dim dt As DataTable = New DataTable
+            Dim dt1 As DataTable = New DataTable
 
 
 
@@ -25,7 +30,7 @@
 
             End If
             lstInEvent.BeginUpdate()
-            strSelect = "SELECT intGolferID, strLastName FROM vEventGolfers WHERE intEventYearID = " & cboEvents.SelectedValue
+            strSelect = "SELECT intGolferID, strLastName FROM vEventGolfers WHERE intEventYearID = " & cboEvents.SelectedValue.ToString
             cmdSelect = New OleDb.OleDbCommand(strSelect, m_conAdministrator)
             drSourceTable = cmdSelect.ExecuteReader
 
@@ -37,6 +42,26 @@
             If lstInEvent.Items.Count > 0 Then lstInEvent.SelectedIndex = 0
 
             lstInEvent.EndUpdate()
+            lstAvailable.BeginUpdate()
+
+
+            strSelect = "SELECT intGolferID, strLastName FROM TGolfers WHERE intGolferID NOT IN (SELECT intGolferID FROM TGolferEventYears WHERE TGolferEventYears.intEventYearID = " & cboEvents.SelectedValue.ToString & ")"
+            cmdSelect = New OleDb.OleDbCommand(strSelect, m_conAdministrator)
+            drSourceTable = cmdSelect.ExecuteReader
+
+
+            dt1.Load(drSourceTable)
+
+
+            lstAvailable.ValueMember = "intGolferID"
+            lstAvailable.DisplayMember = "strLastName"
+            lstAvailable.DataSource = dt1
+
+
+
+            If lstAvailable.Items.Count > 0 Then lstAvailable.SelectedIndex = 0
+
+            lstAvailable.EndUpdate()
             drSourceTable.Close()
             CloseDatabaseConnection()
         Catch ex As Exception
@@ -67,14 +92,14 @@
 
 
 
-            strInsert = "INSERT INTO TGolferEventYears ( intGolferID, intEventYearID )" & "VALUES ( " & cboEvents.SelectedValue & ", " & lstAvailable.SelectedValue & ")"
+            strInsert = "INSERT INTO TGolferEventYears ( intGolferID, intEventYearID )" & "VALUES ( " & lstAvailable.SelectedValue.ToString & ", " & cboEvents.SelectedValue.ToString & ")"
             cmdInsert = New OleDb.OleDbCommand(strInsert, m_conAdministrator)
             intRowsAffected = cmdInsert.ExecuteNonQuery()
             CloseDatabaseConnection()
             frmAddGolferEvent_Load(sender, e)
 
         Catch ex As Exception
-
+            MessageBox.Show(ex.Message)
         End Try
     End Sub
 
@@ -124,9 +149,11 @@
 
             CloseDatabaseConnection()
 
+
             ' load golfers into list
             '******************************
             Dim dt1 As DataTable = New DataTable
+            Dim dt2 As DataTable = New DataTable
 
 
             If OpenDatabaseConnectionSQLServer() = False Then
@@ -141,24 +168,36 @@
                 Me.Close()
 
             End If
+            lstInEvent.BeginUpdate()
+            strSelect = "SELECT intGolferID, strLastName FROM vEventGolfers WHERE intEventYearID = " & cboEvents.SelectedValue.ToString
+            cmdSelect = New OleDb.OleDbCommand(strSelect, m_conAdministrator)
+            drSourceTable = cmdSelect.ExecuteReader
 
+
+            dt1.Load(drSourceTable)
+            lstInEvent.ValueMember = "intGolferID"
+            lstInEvent.DisplayMember = "strLastName"
+            lstInEvent.DataSource = dt1
+            If lstInEvent.Items.Count > 0 Then lstInEvent.SelectedIndex = 0
+
+            lstInEvent.EndUpdate()
 
             lstAvailable.BeginUpdate()
 
             '*****************************
             'TODO: change this so golfers can be in more than one event, but not the same one twice
             '******************************
-            strSelect = "SELECT intGolferID, strLastName FROM vAvailableGolfers"
+            strSelect = "SELECT intGolferID, strLastName FROM TGolfers WHERE intGolferID NOT IN (SELECT intGolferID FROM TGolferEventYears WHERE TGolferEventYears.intEventYearID = " & cboEvents.SelectedValue.ToString & ")"
             cmdSelect = New OleDb.OleDbCommand(strSelect, m_conAdministrator)
             drSourceTable = cmdSelect.ExecuteReader
 
 
-            dt1.Load(drSourceTable)
+            dt2.Load(drSourceTable)
 
 
             lstAvailable.ValueMember = "intGolferID"
             lstAvailable.DisplayMember = "strLastName"
-            lstAvailable.DataSource = dt1
+            lstAvailable.DataSource = dt2
 
 
 

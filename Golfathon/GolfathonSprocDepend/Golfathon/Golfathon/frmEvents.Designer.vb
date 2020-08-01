@@ -30,6 +30,7 @@ Partial Class frmEvents
         '
         'cboYear
         '
+        Me.cboYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboYear.FormattingEnabled = True
         Me.cboYear.Location = New System.Drawing.Point(75, 40)
         Me.cboYear.Name = "cboYear"

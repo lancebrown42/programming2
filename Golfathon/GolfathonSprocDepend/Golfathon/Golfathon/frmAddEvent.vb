@@ -1,7 +1,7 @@
 ﻿''''
 '''Lance Brown
-'''Assignment 7
-'''7/25/20
+'''Assignment 8
+'''08/01/20
 Option Strict On
 Public Class frmAddEvent
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
