@@ -91,6 +91,18 @@
     <Compile Include="frmAddGolferEvent.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmAddGolferSponsor.Designer.vb">
+      <DependentUpon>frmAddGolferSponsor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddGolferSponsor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddSponsor.Designer.vb">
+      <DependentUpon>frmAddSponsor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddSponsor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmEvents.Designer.vb">
       <DependentUpon>frmEvents.vb</DependentUpon>
     </Compile>
@@ -108,6 +120,12 @@
     </Compile>
     <Compile Include="frmMain.Designer.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSponsors.Designer.vb">
+      <DependentUpon>frmSponsors.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSponsors.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="modDatabaseUltilities.vb" />
@@ -137,6 +155,12 @@
     <EmbeddedResource Include="frmAddGolferEvent.resx">
       <DependentUpon>frmAddGolferEvent.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAddGolferSponsor.resx">
+      <DependentUpon>frmAddGolferSponsor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddSponsor.resx">
+      <DependentUpon>frmAddSponsor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEvents.resx">
       <DependentUpon>frmEvents.vb</DependentUpon>
     </EmbeddedResource>
@@ -145,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSponsors.resx">
+      <DependentUpon>frmSponsors.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
