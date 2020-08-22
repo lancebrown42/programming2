@@ -27,7 +27,7 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub btnGolferSponsor_Click(sender As Object, e As EventArgs) Handles btnGolferSponsor.Click
+    Private Sub btnGolferSponsor_Click(sender As Object, e As EventArgs) 
         frmAddGolferSponsor.ShowDialog()
     End Sub
 End Class

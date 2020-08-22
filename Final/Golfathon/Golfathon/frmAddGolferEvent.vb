@@ -252,8 +252,8 @@ Public Class frmAddGolferEvent
                 cmdSelect = New OleDb.OleDbCommand(strSelect, m_conAdministrator)
                 drSourceTable = cmdSelect.ExecuteReader
                 dt2.Load(drSourceTable)
-                cboSponsorType.ValueMember = "intSponsorID"
-                cboSponsorType.DisplayMember = "strSponsorTypeDesc"
+            cboSponsorType.ValueMember = "intSponsorTypeID"
+            cboSponsorType.DisplayMember = "strSponsorTypeDesc"
                 cboSponsorType.DataSource = dt2
                 If cboSponsorType.Items.Count > 0 Then cboSponsorType.SelectedIndex = 0
             cboSponsorType.EndUpdate()
@@ -269,6 +269,8 @@ Public Class frmAddGolferEvent
             cboPaymentType.DataSource = dt3
             If cboPaymentType.Items.Count > 0 Then cboPaymentType.SelectedIndex = 0
             cboPaymentType.EndUpdate()
+
+            cboPayment.SelectedIndex = 0
 
 
 
@@ -352,56 +354,60 @@ Public Class frmAddGolferEvent
             Dim dt1 As DataTable = New DataTable
             Dim intRowsAffected As Integer
             Dim cmdAddGolferSponsor As New OleDb.OleDbCommand
-            Dim result As DialogResult
+
             Dim strSelect As String = ""
             Dim strGolferID As String = ""
 
+            If Validation() = True Then
 
 
-            If OpenDatabaseConnectionSQLServer() = False Then
+
+                If OpenDatabaseConnectionSQLServer() = False Then
 
 
-                MessageBox.Show(Me, "Database connection error." & vbNewLine &
-                                    "The application will now close.",
-                                    Me.Text + " Error",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show(Me, "Database connection error." & vbNewLine &
+                                        "The application will now close.",
+                                        Me.Text + " Error",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error)
 
 
-                Me.Close()
+                    Me.Close()
 
+                End If
+
+                strSelect = "SELECT intGolferID from TGolferEventYears WHERE intGolferEventYearID = " & lstInEvent.SelectedValue.ToString
+
+
+                cmdSelect = New OleDb.OleDbCommand(strSelect, m_conAdministrator)
+                drSourceTable = cmdSelect.ExecuteReader
+                dt1.Load(drSourceTable)
+                Dim drGolferId As Object = dt1.Rows.Item(0).Item("intGolferID")
+                Dim intPKID As Integer
+
+
+                'MessageBox.Show("EXECUTE uspAddGolferSponsor " & intPKID & ", " & dt1.Rows.Item(0).Item("intGolferID").ToString & ", " & cboEvents.SelectedValue.ToString & ", " & cboSponsors.SelectedValue.ToString & ", " & txtPledge.Text & ", " & cboSponsorType.SelectedValue.ToString & ", " & cboPaymentType.SelectedValue.ToString & ", " & cboPayment.SelectedIndex.ToString)
+                cmdAddGolferSponsor.CommandText = "EXECUTE uspAddGolferSponsor " & intPKID & ", " & dt1.Rows.Item(0).Item("intGolferID").ToString & ", " & cboEvents.SelectedValue.ToString & ", " & cboSponsors.SelectedValue.ToString & ", " & txtPledge.Text & ", " & cboSponsorType.SelectedValue.ToString & ", " & cboPaymentType.SelectedValue.ToString & ", " & cboPayment.SelectedIndex.ToString
+                cmdAddGolferSponsor.CommandType = CommandType.StoredProcedure
+
+                cmdAddGolferSponsor = New OleDb.OleDbCommand(cmdAddGolferSponsor.CommandText, m_conAdministrator)
+                Try
+                    intRowsAffected = cmdAddGolferSponsor.ExecuteNonQuery()
+                Catch ex As Exception
+                    MessageBox.Show("Golfer-sponsor relationship already exists.")
+                End Try
+
+                If intRowsAffected > 0 Then
+                    MessageBox.Show("Sponsor added")
+                End If
+
+
+
+
+
+
+                CloseDatabaseConnection()
+                frmAddGolferEvent_Load(sender, e)
             End If
-
-            strSelect = "SELECT intGolferID from TGolferEventYears WHERE intGolferEventYearID = " & lstInEvent.SelectedValue.ToString
-
-
-            cmdSelect = New OleDb.OleDbCommand(strSelect, m_conAdministrator)
-            drSourceTable = cmdSelect.ExecuteReader
-            dt1.Load(drSourceTable)
-            result = MessageBox.Show("Add Sponsor " & cboSponsors.SelectedText & " to Golfer- " & lstInEvent.Text & " in " & cboEvents.Text & " ?", "Confirm Deletion", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
-
-
-            Select Case result
-                Case DialogResult.Cancel
-                    MessageBox.Show("Action Canceled")
-                Case DialogResult.No
-                    MessageBox.Show("Action Canceled")
-                Case DialogResult.Yes
-
-
-                    cmdAddGolferSponsor.CommandText = "EXECUTE uspAddGolferSponsor " & dt1.Select().ToString & ", " & cboEvents.SelectedValue.ToString & ", " & cboSponsors.SelectedValue.ToString & ", " & txtPledge.Text & ", " & cboSponsorType.SelectedValue.ToString & ", " & cboPaymentType.SelectedValue.ToString & ", " & cboPayment.SelectedValue.ToString
-                    cmdAddGolferSponsor.CommandType = CommandType.StoredProcedure
-
-                    cmdAddGolferSponsor = New OleDb.OleDbCommand(cmdAddGolferSponsor.CommandText, m_conAdministrator)
-
-
-
-            End Select
-
-
-
-            CloseDatabaseConnection()
-            frmAddGolferEvent_Load(sender, e)
-
         Catch ex As Exception
             MessageBox.Show(ex.Message)
 
@@ -411,4 +417,22 @@ Public Class frmAddGolferEvent
     Private Sub lstInEvent_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstInEvent.SelectedIndexChanged
 
     End Sub
+    Public Function Validation() As Boolean
+
+        ' loop through the textboxes and clear them in case they have data in them after a delete
+        For Each cntrl As Control In Controls
+            If TypeOf cntrl Is TextBox Then
+                cntrl.BackColor = Color.White
+                If cntrl.Text = String.Empty Then
+                    cntrl.BackColor = Color.Yellow
+                    cntrl.Focus()
+                    Return False
+                End If
+            End If
+        Next
+
+        'every this is good so return true
+        Return True
+
+    End Function
 End Class

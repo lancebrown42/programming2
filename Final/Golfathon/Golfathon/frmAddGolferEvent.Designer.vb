@@ -119,6 +119,7 @@ Partial Class frmAddGolferEvent
         '
         'cboEvents
         '
+        Me.cboEvents.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboEvents.FormattingEnabled = True
         Me.cboEvents.Location = New System.Drawing.Point(44, 42)
         Me.cboEvents.Name = "cboEvents"
@@ -145,6 +146,7 @@ Partial Class frmAddGolferEvent
         '
         'cboSponsors
         '
+        Me.cboSponsors.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboSponsors.FormattingEnabled = True
         Me.cboSponsors.Location = New System.Drawing.Point(145, 274)
         Me.cboSponsors.Name = "cboSponsors"
@@ -162,6 +164,7 @@ Partial Class frmAddGolferEvent
         '
         'cboSponsorType
         '
+        Me.cboSponsorType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboSponsorType.FormattingEnabled = True
         Me.cboSponsorType.Location = New System.Drawing.Point(145, 328)
         Me.cboSponsorType.Name = "cboSponsorType"
@@ -179,6 +182,7 @@ Partial Class frmAddGolferEvent
         '
         'cboPaymentType
         '
+        Me.cboPaymentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboPaymentType.FormattingEnabled = True
         Me.cboPaymentType.Location = New System.Drawing.Point(145, 355)
         Me.cboPaymentType.Name = "cboPaymentType"
@@ -196,6 +200,7 @@ Partial Class frmAddGolferEvent
         '
         'cboPayment
         '
+        Me.cboPayment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboPayment.FormattingEnabled = True
         Me.cboPayment.Items.AddRange(New Object() {"Unpaid", "Paid"})
         Me.cboPayment.Location = New System.Drawing.Point(145, 382)

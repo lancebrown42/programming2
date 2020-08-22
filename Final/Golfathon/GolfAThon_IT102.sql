@@ -442,5 +442,3 @@ BEGIN TRANSACTION
 	VALUES (@intGolferID, @intEventYearID, @intSponsorID, @monPledgeAmount, @intSponsorTypeID, @intPaymentTypeID, @blnPaid)
 
 COMMIT TRANSACTION	
-
-SELECT intGolferID, strLastName FROM TGolfers WHERE intGolferID NOT IN (SELECT intGolferID FROM TGolferEventYears WHERE TGolferEventYears.intEventYearID = 0)
