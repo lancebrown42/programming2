@@ -197,6 +197,7 @@ Partial Class frmAddGolferEvent
         'cboPayment
         '
         Me.cboPayment.FormattingEnabled = True
+        Me.cboPayment.Items.AddRange(New Object() {"Unpaid", "Paid"})
         Me.cboPayment.Location = New System.Drawing.Point(145, 382)
         Me.cboPayment.Name = "cboPayment"
         Me.cboPayment.Size = New System.Drawing.Size(121, 21)

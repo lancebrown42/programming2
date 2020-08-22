@@ -29,9 +29,12 @@ IF OBJECT_ID( 'uspAddEvent' )					IS NOT NULL DROP PROCEDURE	uspAddEvent
 IF OBJECT_ID( 'uspAddGolferEventYear' )					IS NOT NULL DROP PROCEDURE	uspAddGolferEventYear
 
 IF OBJECT_ID( 'uspAddGolferAndEventYear' )					IS NOT NULL DROP PROCEDURE	uspAddGolferAndEventYear
+IF OBJECT_ID( 'uspAddGolferSponsor' )					IS NOT NULL DROP PROCEDURE	uspAddGolferSponsor
 
 IF OBJECT_ID( 'vAvailableGolfers' )					IS NOT NULL DROP VIEW	vAvailableGolfers
 IF OBJECT_ID( 'vEventGolfers' )					IS NOT NULL DROP VIEW	vEventGolfers
+IF OBJECT_ID( 'vGolferSponsors' )					IS NOT NULL DROP VIEW	vGolferSponsors
+
 -- --------------------------------------------------------------------------------
 -- Step #1: Create Tables
 -- --------------------------------------------------------------------------------
@@ -105,7 +108,7 @@ CREATE TABLE TGolferEventYears
 
 CREATE TABLE TGolferEventYearSponsors
 (
-	 intGolferEventYearSponsorID	INTEGER 			NOT NULL
+	 intGolferEventYearSponsorID	INTEGER IDENTITY			NOT NULL
 	,intGolferID					INTEGER			NOT NULL
 	,intEventYearID					INTEGER			NOT NULL
 	,intSponsorID					INTEGER			NOT NULL
@@ -194,7 +197,13 @@ VALUES		(1, 'Mens Small')
 		,(7, 'Womens Large')
 		,(8, 'Womens XLarge')
 
-
+---- --------------------------------------------------------------------------------
+---- Step #5: Add years
+---- --------------------------------------------------------------------------------
+INSERT INTO TEventYears ( intEventYearID, intEventYear )
+	VALUES	 ( 1, 2015)
+		,( 2, 2016)
+		,(3, 2017)
 
 ---- --------------------------------------------------------------------------------
 ---- Step #6: Add sponsor types
@@ -220,9 +229,30 @@ INSERT INTO TSponsors ( intSponsorID, strFirstName, strLastName, strStreetAddres
 VALUES	 ( 1, 'Jim', 'Smith', '1979 Wayne Trace Rd.', 'Willow', 'OH', '42368', '5135551212', 'jsmith@yahoo.com' )
 		,( 2, 'Sally', 'Jones', '987 Mills Rd.', 'Cincinnati', 'OH', '45202', '5135551234', 'sjones@yahoo.com' )
 
+---- --------------------------------------------------------------------------------
+---- Step #9: Add golfers
+---- --------------------------------------------------------------------------------
 
+INSERT INTO TGolfers ( intGolferID, strFirstName, strLastName, strStreetAddress, strCity, strState, strZip, strPhoneNumber, strEmail, intShirtSizeID, intGenderID )
+VALUES	 ( 1, 'Bill', 'Goldstein', '156 Main St.', 'Mason', 'OH', '45040', '5135559999', 'bGoldstein@yahoo.com', 1, 2 )
+		,( 2, 'Tara', 'Everett', '3976 Deer Run', 'West Chester', 'OH', '45069', '5135550101', 'teverett@yahoo.com', 6, 1 )
 
+---- --------------------------------------------------------------------------------
+---- Step # 10: Add Golfers and sponsors to link them
+---- --------------------------------------------------------------------------------
 
+INSERT INTO TGolferEventYears ( intGolferID, intEventYearID)
+	VALUES ( 1, 1)
+		,( 2, 1)
+		,( 1, 2)
+		,( 2, 2)
+
+---- --------------------------------------------------------------------------------
+---- Step # 10: Add Golfers and sponsors to link them
+---- --------------------------------------------------------------------------------
+INSERT INTO TGolferEventYearSponsors ( intGolferID, intEventYearID, intSponsorID, monPledgeAmount, intSponsorTypeID, intPaymentTypeID, blnPaid )
+VALUES	 ( 1, 1, 1, 25.00, 1, 1, 1 )
+		,( 1, 1, 2, 25.00, 1, 1, 1 )
 	
 
 GO
@@ -253,6 +283,29 @@ FROM
 WHERE
 	TG.intGolferID = TGE.intGolferID
 AND	TE.intEventYearID = TGE.intEventYearID
+
+GO
+CREATE VIEW vGolferSponsors
+AS
+SELECT
+	TG.intGolferID 
+	,TG.strLastName 
+	,TE.intEventYearID
+	,TS.intSponsorID
+	,TS.strLastName as SponsorName
+	,TGES.monPledgeAmount
+	,TGES.intSponsorTypeID 
+	,TGES.intPaymentTypeID 
+	,TGES.blnPaid 
+	FROM
+	TGolfers as TG
+	,TEventYears as TE
+	,TSponsors as TS
+	,TGolferEventYearSponsors as TGES
+WHERE
+	TG.intGolferID = TGES.intGolferID
+AND	TE.intEventYearID=TGES.intEventYearID
+AND TS.intSponsorID = TGES.intSponsorID
 
 GO
 CREATE PROCEDURE uspAddGolfer
@@ -365,6 +418,29 @@ WHERE
 	TG.intGolferID NOT IN (SELECT intGolferID from TGolferEventYears)
 	--AND TE.intEventYearID = TGE.intEventYearID
 
+GO--intGolferEventYearSponsorID, intGolferID, intEventYearID, intSponsorID, monPledgeAmount, intSponsorTypeID, intPaymentTypeID, blnPaid
+CREATE PROCEDURE uspAddGolferSponsor
+		@intGolferEventYearSponsorID as INTEGER OUTPUT		
+		,@intGolferID as INTEGER
+		,@intEventYearID as INTEGER
+		,@intSponsorID as Integer
+		,@monPledgeAmount	AS MONEY		
+		,@intSponsorTypeID	AS INTEGER		
+		,@intPaymentTypeID	AS INTEGER		
+		,@blnPaid			AS BIT		
+				
+AS
+SET XACT_ABORT ON
 
+BEGIN TRANSACTION
+
+	
+	
+	--EXECUTE uspAddGolferSponsor @intGolferEventYearSponsorID OUTPUT, @intGolferID, @intEventYearID, @intSponsorID, @monPledgeAmount, @intSponsorTypeID, @intPaymentTypeID, @blnPaid
+	--insert data
+	INSERT INTO TGolferEventYearSponsors with (TABLOCKX) (intGolferID, intEventYearID, intSponsorID, monPledgeAmount, intSponsorTypeID, intPaymentTypeID, blnPaid)
+	VALUES (@intGolferID, @intEventYearID, @intSponsorID, @monPledgeAmount, @intSponsorTypeID, @intPaymentTypeID, @blnPaid)
+
+COMMIT TRANSACTION	
 
 SELECT intGolferID, strLastName FROM TGolfers WHERE intGolferID NOT IN (SELECT intGolferID FROM TGolferEventYears WHERE TGolferEventYears.intEventYearID = 0)

@@ -244,8 +244,10 @@ Public Class frmAddGolferEvent
                 cboSponsors.DataSource = dt1
                 If cboSponsors.Items.Count > 0 Then cboSponsors.SelectedIndex = 0
 
-                cboSponsors.EndUpdate()
-                cboSponsorType.BeginUpdate()
+            cboSponsors.EndUpdate()
+
+
+            cboSponsorType.BeginUpdate()
                 strSelect = "SELECT intSponsorTypeID, strSponsorTypeDesc from TSponsorTypes"
                 cmdSelect = New OleDb.OleDbCommand(strSelect, m_conAdministrator)
                 drSourceTable = cmdSelect.ExecuteReader
@@ -254,8 +256,10 @@ Public Class frmAddGolferEvent
                 cboSponsorType.DisplayMember = "strSponsorTypeDesc"
                 cboSponsorType.DataSource = dt2
                 If cboSponsorType.Items.Count > 0 Then cboSponsorType.SelectedIndex = 0
-                cboSponsorType.EndUpdate()
-                cboPaymentType.BeginUpdate()
+            cboSponsorType.EndUpdate()
+
+
+            cboPaymentType.BeginUpdate()
                 strSelect = "SELECT intPaymentTypeID, strPaymentTypeDesc from TPaymentTypes"
                 cmdSelect = New OleDb.OleDbCommand(strSelect, m_conAdministrator)
                 drSourceTable = cmdSelect.ExecuteReader
@@ -264,7 +268,10 @@ Public Class frmAddGolferEvent
             cboPaymentType.DisplayMember = "strPaymentTypeDesc"
             cboPaymentType.DataSource = dt3
             If cboPaymentType.Items.Count > 0 Then cboPaymentType.SelectedIndex = 0
-                cboPaymentType.EndUpdate()
+            cboPaymentType.EndUpdate()
+
+
+
             drSourceTable.Close()
             CloseDatabaseConnection()
 
@@ -336,7 +343,69 @@ Public Class frmAddGolferEvent
     End Sub
 
     Private Sub btnAddSponsor_Click(sender As Object, e As EventArgs) Handles btnAddSponsor.Click
+        Try
+            Dim strInsert As String = ""
+            Dim cmdInsert As New OleDb.OleDbCommand
+            Dim cmdSelect As New OleDb.OleDbCommand
+            Dim drSourceTable As OleDb.OleDbDataReader
+            Dim dt As DataTable = New DataTable
+            Dim dt1 As DataTable = New DataTable
+            Dim intRowsAffected As Integer
+            Dim cmdAddGolferSponsor As New OleDb.OleDbCommand
+            Dim result As DialogResult
+            Dim strSelect As String = ""
+            Dim strGolferID As String = ""
 
+
+
+            If OpenDatabaseConnectionSQLServer() = False Then
+
+
+                MessageBox.Show(Me, "Database connection error." & vbNewLine &
+                                    "The application will now close.",
+                                    Me.Text + " Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+
+                Me.Close()
+
+            End If
+
+            strSelect = "SELECT intGolferID from TGolferEventYears WHERE intGolferEventYearID = " & lstInEvent.SelectedValue.ToString
+
+
+            cmdSelect = New OleDb.OleDbCommand(strSelect, m_conAdministrator)
+            drSourceTable = cmdSelect.ExecuteReader
+            dt1.Load(drSourceTable)
+            result = MessageBox.Show("Add Sponsor " & cboSponsors.SelectedText & " to Golfer- " & lstInEvent.Text & " in " & cboEvents.Text & " ?", "Confirm Deletion", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
+
+
+            Select Case result
+                Case DialogResult.Cancel
+                    MessageBox.Show("Action Canceled")
+                Case DialogResult.No
+                    MessageBox.Show("Action Canceled")
+                Case DialogResult.Yes
+
+
+                    cmdAddGolferSponsor.CommandText = "EXECUTE uspAddGolferSponsor " & dt1.Select().ToString & ", " & cboEvents.SelectedValue.ToString & ", " & cboSponsors.SelectedValue.ToString & ", " & txtPledge.Text & ", " & cboSponsorType.SelectedValue.ToString & ", " & cboPaymentType.SelectedValue.ToString & ", " & cboPayment.SelectedValue.ToString
+                    cmdAddGolferSponsor.CommandType = CommandType.StoredProcedure
+
+                    cmdAddGolferSponsor = New OleDb.OleDbCommand(cmdAddGolferSponsor.CommandText, m_conAdministrator)
+
+
+
+            End Select
+
+
+
+            CloseDatabaseConnection()
+            frmAddGolferEvent_Load(sender, e)
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+
+        End Try
     End Sub
 
     Private Sub lstInEvent_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstInEvent.SelectedIndexChanged
