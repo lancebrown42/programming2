@@ -175,7 +175,7 @@ Public Class frmSponsors
                 strSelect = "Update TSponsors Set strFirstName = '" & strFirstName & "', " & "strLastName = '" & strLastName &
                 "', " & "strStreetAddress = '" & strAddress & "', " & "strCity = '" & strCity & "', " &
                  "strState = '" & strState & "', " & "strZip = '" & strZip & "', " & "strPhoneNumber = '" & strPhone & "', " & "strEmail = '" & strEmail &
-                 " Where intSponsorID = " & cboNames.SelectedValue.ToString
+                 "' Where intSponsorID = " & cboNames.SelectedValue.ToString
 
                 ' uncomment out the following message box line to use as a tool to check your sql statement
                 ' remember anything not a numeric value going into SQL Server must have single quotes '
@@ -204,5 +204,85 @@ Public Class frmSponsors
                 frmSponsors_Load(sender, e)
             End If
         End If
+    End Sub
+    Public Function Validation() As Boolean
+        For Each ctrl As Control In Controls
+            If TypeOf ctrl Is TextBox Then
+                ctrl.BackColor = Color.White
+                If ctrl.Text = String.Empty Then
+                    ctrl.BackColor = Color.HotPink
+                    ctrl.Focus()
+                    Return False
+                End If
+            End If
+        Next
+        Return True
+
+    End Function
+
+    Private Sub btnAddSponsor_Click(sender As Object, e As EventArgs) Handles btnAddSponsor.Click
+        Dim AddSponsor As New frmAddSponsor
+        AddSponsor.ShowDialog()
+        frmSponsors_Load(sender, e)
+    End Sub
+
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        Dim strDelete As String = ""
+        Dim strSelect As String = String.Empty
+        Dim strName As String = ""
+        Dim intRowsAffected As Integer
+        Dim cmdDelete As OleDb.OleDbCommand ' this will be used for our Delete statement
+        Dim dt As DataTable = New DataTable ' this is the table we will load from our reader
+        Dim result As DialogResult  ' this is the result of which button the user selects
+        If OpenDatabaseConnectionSQLServer() = False Then
+            MessageBox.Show("Database connection error." & vbNewLine &
+                                "The application will now close.",
+                                Text + " Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Close()
+
+        End If
+
+        result = MessageBox.Show("Are you sure you want to Delete Sponsor: Last Name-" & cboNames.Text & "?", "Confirm Deletion", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
+
+        Select Case result
+            Case DialogResult.Cancel
+                MessageBox.Show("Action Canceled")
+            Case DialogResult.No
+                MessageBox.Show("Action Canceled")
+            Case DialogResult.Yes
+
+
+                ' Build the delete statement using PK from name selected
+                ' must delete any child revords first
+                strDelete = "Delete FROM TSponsorEventYears Where intSponsorID = " & cboNames.SelectedValue.ToString
+
+                ' Delete the record(s) 
+                cmdDelete = New OleDb.OleDbCommand(strDelete, m_conAdministrator)
+                intRowsAffected = cmdDelete.ExecuteNonQuery()
+
+                ' now we can delete the parent record
+                strDelete = "Delete FROM TSponsors Where intSponsorID = " & cboNames.SelectedValue.ToString
+
+                ' Delete the record(s) 
+                cmdDelete = New OleDb.OleDbCommand(strDelete, m_conAdministrator)
+                intRowsAffected = cmdDelete.ExecuteNonQuery()
+
+                ' Did it work?
+                If intRowsAffected > 0 Then
+
+                    ' Yes, success
+                    MessageBox.Show("Delete successful")
+
+                End If
+
+        End Select
+
+
+        ' close the database connection
+        CloseDatabaseConnection()
+
+        ' call the Form Load sub to refresh the combo box data after a delete
+        frmSponsors_Load(sender, e)
     End Sub
 End Class

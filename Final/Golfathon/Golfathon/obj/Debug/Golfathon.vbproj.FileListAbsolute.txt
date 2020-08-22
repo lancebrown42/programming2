@@ -64,3 +64,6 @@ C:\Users\lance\Documents\code\programming2\Final\Golfathon\Golfathon\obj\Debug\G
 C:\Users\lance\Documents\code\programming2\Final\Golfathon\Golfathon\obj\Debug\Golfathon.exe
 C:\Users\lance\Documents\code\programming2\Final\Golfathon\Golfathon\obj\Debug\Golfathon.xml
 C:\Users\lance\Documents\code\programming2\Final\Golfathon\Golfathon\obj\Debug\Golfathon.pdb
+C:\Users\lance\Documents\code\programming2\Final\Golfathon\Golfathon\obj\Debug\Golfathon.frmAddGolferSponsor.resources
+C:\Users\lance\Documents\code\programming2\Final\Golfathon\Golfathon\obj\Debug\Golfathon.frmAddSponsor.resources
+C:\Users\lance\Documents\code\programming2\Final\Golfathon\Golfathon\obj\Debug\Golfathon.frmSponsors.resources

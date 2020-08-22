@@ -16,7 +16,19 @@ IF OBJECT_ID( 'TShirtSizes' )					IS NOT NULL DROP TABLE	TShirtSizes
 IF OBJECT_ID( 'TPaymentTypes' )					IS NOT NULL DROP TABLE	TPaymentTypes
 IF OBJECT_ID( 'TSponsors' )						IS NOT NULL DROP TABLE	TSponsors
 IF OBJECT_ID( 'TSponsorTypes' )					IS NOT NULL DROP TABLE	TSponsorTypes
+-- --------------------------------------------------------------------------------
+-- Drop sprocs
+-- --------------------------------------------------------------------------------
+IF OBJECT_ID( 'uspAddGolfer' )					IS NOT NULL DROP PROCEDURE	uspAddGolfer
+IF OBJECT_ID( 'uspAddEvent' )					IS NOT NULL DROP PROCEDURE	uspAddEvent
 
+IF OBJECT_ID( 'uspAddGolferEventYear' )			IS NOT NULL DROP PROCEDURE	uspAddGolferEventYear
+
+IF OBJECT_ID( 'uspAddGolferAndEventYear' )		IS NOT NULL DROP PROCEDURE	uspAddGolferAndEventYear
+
+IF OBJECT_ID( 'vAvailableGolfers' )				IS NOT NULL DROP VIEW	vAvailableGolfers
+IF OBJECT_ID( 'vEventGolfers' )					IS NOT NULL DROP VIEW	vEventGolfers
+IF OBJECT_ID( 'vGolferSponsors' )					IS NOT NULL DROP VIEW	vGolferSponsors
 
 -- --------------------------------------------------------------------------------
 -- Step #1: Create Tables
@@ -238,8 +250,153 @@ VALUES	 ( 1, 1, 1, 1, 25.00, 1, 1, 1 )
 		,( 2, 1, 1, 2, 25.00, 1, 1, 1 )
 		
 
-
+GO
+CREATE VIEW vAvailableGolfers
+AS
+SELECT
+	TG.intGolferID
+	,TG.strLastName
+	,TE.intEventYearID
+FROM
+	TGolfers as TG
+	,TEventYears as TE
+WHERE
+	TG.intGolferID NOT IN (SELECT intGolferID from TGolferEventYears)
 	
+
+GO
+CREATE VIEW vEventGolfers
+AS
+SELECT
+	TG.intGolferID
+	,TG.strLastNAme
+	,TE.intEventYearID
+FROM
+	TGolfers as TG
+	,TEventYears as TE
+	,TGolferEventYears as TGE
+WHERE
+	TG.intGolferID = TGE.intGolferID
+AND	TE.intEventYearID = TGE.intEventYearID
+
+GO
+CREATE VIEW vGolferSponsors
+AS
+SELECT
+	TG.intGolferID 
+	,TG.strLastName 
+	,TE.intEventYearID
+	,TS.intSponsorID
+	,TS.strLastName as SponsorName
+	,TGES.monPledgeAmount
+	,TGES.intSponsorTypeID 
+	,TGES.intPaymentTypeID 
+	,TGES.blnPaid 
+	FROM
+	TGolfers as TG
+	,TEventYears as TE
+	,TSponsors as TS
+	,TGolferEventYearSponsors as TGES
+WHERE
+	TG.intGolferID = TGES.intGolferID
+AND	TE.intEventYearID=TGES.intEventYearID
+AND TS.intSponsorID = TGES.intSponsorID
+
+GO
+CREATE PROCEDURE uspAddGolfer
+		@intGolferID as INTEGER OUTPUT
+		,@strFirstName as VARCHAR(255)
+		,@strLastName as VARCHAR(255)
+		,@strStreetAddress as VARCHAR(255)
+		,@strCity as VARCHAR(255)
+		,@strState as VARCHAR(255)
+		,@strZip as VARCHAR(255)
+		,@strPhoneNumber as VarChar(255)
+		,@strEmail as VARCHAR(255)
+		,@intShirtSizeID as INTEGER
+		,@intGenderID as INTEGER
+AS
+SET XACT_ABORT ON
+
+BEGIN TRANSACTION
+
+	SELECT @intGolferID = MAX(intGolferID) + 1
+	FROM TGolfers(TABLOCKX)
+
+	SELECT @intGolferID = COALESCE(@intGolferID, 1)
+
+	--insert data
+	INSERT INTO TGolfers(intGolferID, strFirstName, strLastName, strStreetAddress, strCity, strState, strZip, strPhoneNumber, strEmail, intShirtSizeID, intGenderID)
+	VALUES (@intGolferID, @strFirstName, @strLastName, @strStreetAddress, @strCity, @strState, @strZip, @strPhoneNumber, @strEmail, @intShirtSizeID, @intGenderID)
+
+COMMIT TRANSACTION
+
+GO
+CREATE PROCEDURE uspAddEvent
+		@intEventYearID as INTEGER OUTPUT
+		,@intEventYear as INTEGER
+AS
+SET XACT_ABORT ON
+
+BEGIN TRANSACTION
+
+	SELECT @intEventYearID = MAX(intEventYearID) + 1
+	FROM TEventYears(TABLOCKX)
+
+	SELECT @intEventYearID = COALESCE(@intEventYearID, 1)
+
+	--insert data
+	INSERT INTO TEventYears(intEventYearID, intEventYear)
+	VALUES (@intEventYearID, @intEventYear)
+
+COMMIT TRANSACTION
+
+GO
+CREATE PROCEDURE uspAddGolferEventYear
+		@intGolferEventYearID  as INTEGER OUTPUT
+		,@intGolferID as INTEGER
+		,@intEventYearID as INTEGER
+AS
+SET XACT_ABORT ON
+
+BEGIN TRANSACTION
+
+	--insert data
+	INSERT INTO TGolferEventYears WITH (TABLOCKX) (intGolferID, intEventYearID)
+	VALUES (@intGolferID, @intEventYearID)
+
+COMMIT TRANSACTION
+
+GO
+CREATE PROCEDURE uspAddGolferAndEventYear
+		@intGolferEventYearID as INTEGER OUTPUT
+		,@strFirstName		AS VARCHAR(50)		
+		,@strLastName		AS VARCHAR(50)		
+		,@strStreetAddress	AS VARCHAR(50)		
+		,@strCity			AS VARCHAR(50)		
+		,@strState			AS VARCHAR(50)		
+		,@strZip			AS VARCHAR(50)		
+		,@strPhoneNumber	AS VARCHAR(50)		
+		,@strEmail			AS VARCHAR(50)		
+		,@intShirtSizeID	AS INTEGER			
+		,@intGenderID		AS INTEGER			
+		,@intEventYear		AS INTEGER			
+AS
+SET XACT_ABORT ON
+
+BEGIN TRANSACTION
+	DECLARE @intGolferID as INTEGER
+	DECLARE @intEventYearID as INTEGER
+	EXECUTE uspAddGolfer @intGolferID OUTPUT, @strFirstName, @strLastName, @strStreetAddress, @strCity, @strState, @strZip, @strPhoneNumber, @strEmail, @intShirtSizeID, @intGenderID
+	
+	EXECUTE uspAddEvent @intEventYearID OUTPUT, @intEventYear
+
+	EXECUTE uspAddGolferEventYear @intGolferEventYearID OUTPUT, @intGolferID, @intEventYearID
+	--insert data
+	INSERT INTO TGolferEventYears with (TABLOCKX) (intGolferID, intEventYearID)
+	VALUES (@intGolferID, @intEventYearID)
+
+COMMIT TRANSACTION	
 
 
 

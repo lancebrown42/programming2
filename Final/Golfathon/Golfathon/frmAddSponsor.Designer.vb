@@ -38,7 +38,7 @@ Partial Class frmAddSponsor
         Me.txtAddress = New System.Windows.Forms.TextBox()
         Me.txtLastName = New System.Windows.Forms.TextBox()
         Me.txtFirstName = New System.Windows.Forms.TextBox()
-        Me.btnAddGolfer = New System.Windows.Forms.Button()
+        Me.btnAddSponsor = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
@@ -170,15 +170,15 @@ Partial Class frmAddSponsor
         Me.txtFirstName.Size = New System.Drawing.Size(100, 20)
         Me.txtFirstName.TabIndex = 46
         '
-        'btnAddGolfer
+        'btnAddSponsor
         '
-        Me.btnAddGolfer.Location = New System.Drawing.Point(19, 253)
-        Me.btnAddGolfer.Margin = New System.Windows.Forms.Padding(2)
-        Me.btnAddGolfer.Name = "btnAddGolfer"
-        Me.btnAddGolfer.Size = New System.Drawing.Size(57, 37)
-        Me.btnAddGolfer.TabIndex = 63
-        Me.btnAddGolfer.Text = "Add"
-        Me.btnAddGolfer.UseVisualStyleBackColor = True
+        Me.btnAddSponsor.Location = New System.Drawing.Point(19, 253)
+        Me.btnAddSponsor.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnAddSponsor.Name = "btnAddSponsor"
+        Me.btnAddSponsor.Size = New System.Drawing.Size(57, 37)
+        Me.btnAddSponsor.TabIndex = 63
+        Me.btnAddSponsor.Text = "Add"
+        Me.btnAddSponsor.UseVisualStyleBackColor = True
         '
         'btnClose
         '
@@ -195,7 +195,7 @@ Partial Class frmAddSponsor
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(240, 314)
-        Me.Controls.Add(Me.btnAddGolfer)
+        Me.Controls.Add(Me.btnAddSponsor)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
@@ -236,6 +236,6 @@ Partial Class frmAddSponsor
     Friend WithEvents txtAddress As TextBox
     Friend WithEvents txtLastName As TextBox
     Friend WithEvents txtFirstName As TextBox
-    Friend WithEvents btnAddGolfer As Button
+    Friend WithEvents btnAddSponsor As Button
     Friend WithEvents btnClose As Button
 End Class
